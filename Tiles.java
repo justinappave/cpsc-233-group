@@ -8,6 +8,10 @@ public class Tiles{
     int playerLength = playerName.length();
     if(playerLength >= 10){
       System.out.println("Error. Too long!");
+    System.out.println("Select mode: ");
+    System.out.println("1. Race Time Mode");
+    System.out.println("2. Hi-score Mode");
+    String modeSelected = keyboard.nextLine();
     }
   }
 }
