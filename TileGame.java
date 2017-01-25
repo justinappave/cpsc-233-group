@@ -1,3 +1,5 @@
+//You can enter what row and column you want the number to be placed in
+
 import java.util.Scanner;
 
 public class TileGame{
@@ -14,17 +16,25 @@ public class TileGame{
 	
 	public static void main(String[] args){
 	
-	char[][] grid = startConfig;
+	char [][]grid = startConfig;
 	while(startConfig != possibleXWin){
 		for (int row = 0; row < 3; row++) {
-				System.out.print("|");
+			System.out.print("|");
 				for (int column = 0; column < 3; column++) {
 					System.out.print(grid[row][column] + "|");}
-				System.out.println();}
+			System.out.println();}
 		{Scanner keyboard = new Scanner(System.in);
 		System.out.print("Enter row: ");
 		int enteredRow = keyboard.nextInt();
 		System.out.print("Enter column: ");
-		int enteredColumn = keyboard.nextInt();}}
+		int enteredColumn = keyboard.nextInt();
+		
+		if(enteredRow < 0 || enteredColumn < 0 ){
+			System.out.println("Invalid entry!");}
+		else{
+			grid[enteredRow][enteredColumn] = '1';}
+			
+			}
+		}
 	}
 }
