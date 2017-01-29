@@ -1,20 +1,75 @@
 import java.util.Scanner;
 
 public class TileGame{
-	static char[][] startConfig = {
+	static char[][] easyConfig = {
 		{'1','2','3'},
 		{'4','5','6'},
 		{'7',' ','8'}
 	};
 	
+	static char[][] mediumConfig = {
+		{'3','8','4'},
+		{' ','1','7'},
+		{'6','5','2'}
+	};
+	
 	public static void main(String[] args){
-		boolean loop = false;
+		boolean mainLoop = false;
+		boolean difficultyLoop = false;
+		boolean modeLoop = false;
 		int numberRow = 21;
 		int numberColumn = 21;
 		int blankRow = 42;
 		int blankColumn = 42;
-		char [][]grid = startConfig;
-		while(!loop){
+		String playerName = "";
+		char [][]grid = easyConfig;
+		
+		/*gets name of player. If user name is longer
+		than 10 then program will re-prompt user to enter name*/
+		Scanner keyboard = new Scanner(System.in);
+		int playerLength = 100;
+		while(playerLength >= 10){
+			System.out.print("Enter your player name: ");
+			playerName = keyboard.nextLine();
+			playerLength = playerName.length();
+			if(playerLength >= 10){  	
+				System.out.println("Error. Too long!");}
+			}
+		
+		//prompts uer for mode and difficulty. Will re-prompt if user enters invalid option
+		while(!difficultyLoop){
+			System.out.println("Select mode: ");
+			System.out.println("1. Play mode");
+			int modeSelect = keyboard.nextInt();
+			if(modeSelect == 1){
+				while(!modeLoop){
+						System.out.println("Select Difficulty:");
+						System.out.println("1. Easy");
+						System.out.println("2. Medium");
+						int difficultySelect = keyboard.nextInt();
+						if(difficultySelect == 1){
+							System.out.println("Starting Easy difficulty...");
+							grid = easyConfig;
+							modeLoop = true;
+							difficultyLoop = true;
+						}
+						else if(difficultySelect == 2){
+							System.out.println("Starting Medium difficulty...");
+							grid = mediumConfig;
+							modeLoop = true;
+							difficultyLoop = true;
+						}
+						else{
+							System.out.println("Invalid difficulty");
+						}
+					}
+				}
+			else{
+				System.out.println("Invalid mode");
+			}
+		}
+		
+		while(!mainLoop){
 			
 			//creates the grid with '|' between each number
 			for (int row = 0; row < 3; row++){
@@ -25,7 +80,6 @@ public class TileGame{
 				System.out.println();
 			}
 			
-			Scanner keyboard = new Scanner(System.in);
 			System.out.print("Select number to move: ");
 			char enteredNumber = keyboard.next(".").charAt(0);
 			System.out.print("Where would you like to move that number: ");
@@ -65,7 +119,7 @@ public class TileGame{
 				grid[numberRow][numberColumn - 1] = enteredNumber;
 			}
 			else if(userMove.equals("boohbah")){
-				loop = true;
+				mainLoop = true;
 			}
 			else{
 				System.out.println("Invalid move");
@@ -80,8 +134,8 @@ public class TileGame{
 								if(grid[1][2] == '6'){
 									if(grid[2][0] == '7'){
 										if(grid[2][1] == '8'){
-											System.out.println("You win!");
-											loop = true;
+											System.out.println("You win, congratulations " + playerName + "!");
+											mainLoop = true;
 										}
 									}
 								}
