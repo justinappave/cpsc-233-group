@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Tiles{
+public class TilesMenu{
   public static void main(String[] args){
     Scanner keyboard = new Scanner(System.in);
     int playerLength = 100;
