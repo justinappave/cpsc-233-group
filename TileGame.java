@@ -15,6 +15,7 @@ public class TileGame{
 		int blankColumn = 42;
 		char [][]grid = startConfig;
 		while(!loop){
+			
 			//creates the grid with '|' between each number
 			for (int row = 0; row < 3; row++){
 				System.out.print("|");
@@ -62,6 +63,9 @@ public class TileGame{
 			else if(userMove.equals("l")){
 				grid[numberRow][numberColumn] = ' ';
 				grid[numberRow][numberColumn - 1] = enteredNumber;
+			}
+			else if(userMove.equals("boohbah")){
+				loop = true;
 			}
 			else{
 				System.out.println("Invalid move");
