@@ -17,17 +17,18 @@ public class TileGame{
 		boolean mainLoop = false;
 		boolean difficultyLoop = false;
 		boolean modeLoop = false;
+		boolean DEBUG = false;
+		String playerName = "";
+		char [][]grid = easyConfig;
+		int playerLength = 100;
 		int numberRow = 21;
 		int numberColumn = 21;
 		int blankRow = 42;
 		int blankColumn = 42;
-		String playerName = "";
-		char [][]grid = easyConfig;
 		
 		/*gets name of player. If user name is longer
 		than 10 then program will re-prompt user to enter name*/
 		Scanner keyboard = new Scanner(System.in);
-		int playerLength = 100;
 		while(playerLength >= 10){
 			System.out.print("Enter your player name: ");
 			playerName = keyboard.nextLine();
@@ -145,13 +146,13 @@ public class TileGame{
 				}
 			}
 			
-			/*debugging values:
+			//debugging values
+			if(DEBUG == true){
 			System.out.println(numberRow);
 			System.out.println(numberColumn);
 			System.out.println(blankRow);
 			System.out.println(blankColumn);
-			*/
-			
+			}
 		}
 	}
 }
