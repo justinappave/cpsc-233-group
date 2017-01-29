@@ -70,6 +70,7 @@ public class TileGame{
 			}
 		}
 		
+		System.out.println("Use 'd' to move down, 'u' to move up, 'l' to move left and 'r' to move right!");
 		while(!mainLoop){
 			
 			//creates the grid with '|' between each number
