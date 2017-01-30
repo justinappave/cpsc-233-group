@@ -111,9 +111,14 @@ public class TileGame{
                         grid[numberRow + 1][numberColumn] = enteredNumber;
                     }
                     else { //case where adjacent space is not empty, allows for moving two pieces at once
-                        grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow + 1][numberColumn] = enteredNumber;
+                        if (grid[numberRow + 2][numberColumn] == ' ') {
+                            grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
+                            grid[numberRow][numberColumn] = ' ';
+                            grid[numberRow + 1][numberColumn] = enteredNumber;
+                        }
+                        else {
+                            System.out.println("Invalid move. Spaces filled");
+                        }
                     }
                 }
                 catch (ArrayIndexOutOfBoundsException e){
@@ -127,9 +132,14 @@ public class TileGame{
                         grid[numberRow - 1][numberColumn] = enteredNumber;
                     }
                     else {
-                        grid[numberRow - 2][numberColumn] = grid[numberRow - 1][numberColumn];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow - 1][numberColumn] = enteredNumber;
+                        if (grid[numberRow - 2][numberColumn] == ' ') {
+                            grid[numberRow - 2][numberColumn] = grid[numberRow - 1][numberColumn];
+                            grid[numberRow][numberColumn] = ' ';
+                            grid[numberRow - 1][numberColumn] = enteredNumber;
+                        }
+                        else {
+                            System.out.println("Invalid move. Spaces filled");
+                        }
                     }
                 }
                 catch (ArrayIndexOutOfBoundsException e){
@@ -143,9 +153,14 @@ public class TileGame{
                         grid[numberRow][numberColumn + 1] = enteredNumber;
                     }
                     else {
-                        grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow][numberColumn + 1] = enteredNumber;
+                        if (grid[numberRow][numberColumn + 2] == ' ') {
+                            grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
+                            grid[numberRow][numberColumn] = ' ';
+                            grid[numberRow][numberColumn + 1] = enteredNumber;
+                        }
+                        else {
+                            System.out.println("Invalid move. Spaces filled");
+                        }
                     }
                 }
                 catch (ArrayIndexOutOfBoundsException e){
@@ -159,9 +174,14 @@ public class TileGame{
                         grid[numberRow][numberColumn - 1] = enteredNumber;
                     }
                     else {
-                        grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow][numberColumn - 1] = enteredNumber;
+                        if (grid[numberRow][numberColumn - 2] == ' ') {
+                            grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
+                            grid[numberRow][numberColumn] = ' ';
+                            grid[numberRow][numberColumn - 1] = enteredNumber;
+                        }
+                        else {
+                            System.out.println("Invalid move. Spaces filled");
+                        }
                     }
                 }
                 catch (ArrayIndexOutOfBoundsException e){
