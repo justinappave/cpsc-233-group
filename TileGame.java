@@ -105,20 +105,68 @@ public class TileGame{
 			/*checks where the user wants to move and adds or subtracts from the 
 			appropriate row or column and places the number the user selected there*/
 			if(userMove.equals("d")){
-				grid[numberRow][numberColumn] = ' ';
-				grid[numberRow + 1][numberColumn] = enteredNumber;
+                try { // makes sure user move is in playing field bounds
+                    if (grid[numberRow + 1][numberColumn] == ' ') { // case where adjacent space is empty
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow + 1][numberColumn] = enteredNumber;
+                    }
+                    else { //case where adjacent space is not empty, allows for moving two pieces at once
+                        grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow + 1][numberColumn] = enteredNumber;
+                    }
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println("Invalid Move. Out of bounds, try again");
+                }
 			}
 			else if(userMove.equals("u")){
-				grid[numberRow][numberColumn] = ' ';
-				grid[numberRow - 1][numberColumn] = enteredNumber;
+                try {
+                    if (grid[numberRow - 1][numberColumn] == ' ') {
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow - 1][numberColumn] = enteredNumber;
+                    }
+                    else {
+                        grid[numberRow - 2][numberColumn] = grid[numberRow - 1][numberColumn];
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow - 1][numberColumn] = enteredNumber;
+                    }
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println("Invalid Move. Out of bounds, try again");
+                }
 			}
 			else if(userMove.equals("r")){
-				grid[numberRow][numberColumn] = ' ';
-				grid[numberRow][numberColumn + 1] = enteredNumber;
+                try {
+                    if (grid[numberRow][numberColumn + 1] == ' ') {
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow][numberColumn + 1] = enteredNumber;
+                    }
+                    else {
+                        grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow][numberColumn + 1] = enteredNumber;
+                    }
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println("Invalid Move. Out of bounds, try again");
+                }
 			}
 			else if(userMove.equals("l")){
-				grid[numberRow][numberColumn] = ' ';
-				grid[numberRow][numberColumn - 1] = enteredNumber;
+                try {
+                    if (grid[numberRow][numberColumn - 1] == ' ') {
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow][numberColumn - 1] = enteredNumber;
+                    }
+                    else {
+                        grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
+                        grid[numberRow][numberColumn] = ' ';
+                        grid[numberRow][numberColumn - 1] = enteredNumber;
+                    }
+                }
+                catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println("Invalid Move. Out of bounds, try again");
+                }
 			}
 			else if(userMove.equals("boohbah")){
 				mainLoop = true;
