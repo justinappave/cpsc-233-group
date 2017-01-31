@@ -25,6 +25,7 @@ public class TileGame{
 		int numberColumn = 21;
 		int blankRow = 42;
 		int blankColumn = 42;
+        int moveCounter = 0;
 		
 		/*gets name of player. If user name is longer
 		than 10 then program will re-prompt user to enter name*/
@@ -109,19 +110,21 @@ public class TileGame{
                     if (grid[numberRow + 1][numberColumn] == ' ') { // case where adjacent space is empty
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow + 1][numberColumn] = enteredNumber;
+                        moveCounter += 1;
                     }
                     else { //case where adjacent space is not empty, allows for moving two pieces at once
                         if (grid[numberRow + 2][numberColumn] == ' ') {
                             grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
                             grid[numberRow][numberColumn] = ' ';
                             grid[numberRow + 1][numberColumn] = enteredNumber;
+                            moveCounter += 2; //increase movecounter by 2 since moving 2 tiles
                         }
                         else {
                             System.out.println("Invalid move. Spaces filled");
                         }
                     }
                 }
-                catch (ArrayIndexOutOfBoundsException e){
+                catch (ArrayIndexOutOfBoundsException e){ 
                     System.out.println("Invalid Move. Out of bounds, try again");
                 }
 			}
@@ -130,12 +133,14 @@ public class TileGame{
                     if (grid[numberRow - 1][numberColumn] == ' ') {
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow - 1][numberColumn] = enteredNumber;
+                        moveCounter += 1;
                     }
                     else {
                         if (grid[numberRow - 2][numberColumn] == ' ') {
                             grid[numberRow - 2][numberColumn] = grid[numberRow - 1][numberColumn];
                             grid[numberRow][numberColumn] = ' ';
                             grid[numberRow - 1][numberColumn] = enteredNumber;
+                            moveCounter += 2;
                         }
                         else {
                             System.out.println("Invalid move. Spaces filled");
@@ -151,12 +156,14 @@ public class TileGame{
                     if (grid[numberRow][numberColumn + 1] == ' ') {
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow][numberColumn + 1] = enteredNumber;
+                        moveCounter += 1;
                     }
                     else {
                         if (grid[numberRow][numberColumn + 2] == ' ') {
                             grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
                             grid[numberRow][numberColumn] = ' ';
                             grid[numberRow][numberColumn + 1] = enteredNumber;
+                            moveCounter += 2;
                         }
                         else {
                             System.out.println("Invalid move. Spaces filled");
@@ -172,12 +179,14 @@ public class TileGame{
                     if (grid[numberRow][numberColumn - 1] == ' ') {
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow][numberColumn - 1] = enteredNumber;
+                        moveCounter += 1;
                     }
                     else {
                         if (grid[numberRow][numberColumn - 2] == ' ') {
                             grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
                             grid[numberRow][numberColumn] = ' ';
                             grid[numberRow][numberColumn - 1] = enteredNumber;
+                            moveCounter += 2;
                         }
                         else {
                             System.out.println("Invalid move. Spaces filled");
@@ -205,6 +214,7 @@ public class TileGame{
 									if(grid[2][0] == '7'){
 										if(grid[2][1] == '8'){
 											System.out.println("You win, congratulations " + playerName + "!");
+                                            System.out.println("Move Count: " + moveCounter);
 											mainLoop = true;
 										}
 									}
