@@ -82,7 +82,7 @@ public class TileGame{
 				}
 				System.out.println();
 			}
-			
+			System.out.println("Move Counter: " + moveCounter);
 			System.out.print("Select number to move: ");
 			char enteredNumber = keyboard.next(".").charAt(0);
 			System.out.print("Where would you like to move that number: ");
@@ -117,14 +117,14 @@ public class TileGame{
                             grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
                             grid[numberRow][numberColumn] = ' ';
                             grid[numberRow + 1][numberColumn] = enteredNumber;
-                            moveCounter += 2; //increase movecounter by 2 since moving 2 tiles
+                            moveCounter += 2;
                         }
                         else {
                             System.out.println("Invalid move. Spaces filled");
                         }
                     }
                 }
-                catch (ArrayIndexOutOfBoundsException e){ 
+                catch (ArrayIndexOutOfBoundsException e){
                     System.out.println("Invalid Move. Out of bounds, try again");
                 }
 			}
@@ -214,7 +214,7 @@ public class TileGame{
 									if(grid[2][0] == '7'){
 										if(grid[2][1] == '8'){
 											System.out.println("You win, congratulations " + playerName + "!");
-                                            System.out.println("Move Count: " + moveCounter);
+                                            System.out.println("Total Moves: " + moveCounter);
 											mainLoop = true;
 										}
 									}
