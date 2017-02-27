@@ -48,9 +48,9 @@ public class Grid {
         int numberRow = 21;
 		int numberColumn = 21;
         int moveCounter = 0;
-		Scanner keyboard = new Scanner(System.in);
         System.out.println("Move Counter: " + moveCounter);
 		System.out.print("Select number to move: ");
+        Scanner keyboard = new Scanner(System.in);
 		char enteredNumber = keyboard.next(".").charAt(0);
 		System.out.print("Where would you like to move that number: ");
 		String userMove = keyboard.next();
@@ -62,10 +62,6 @@ public class Grid {
 				if(grid[userRow][userColumn] == enteredNumber){
 					numberRow = userRow;
 					numberColumn = userColumn;
-				}
-				if(grid[userRow][userColumn] == ' '){
-					int blankRow = userRow;
-					int blankColumn = userColumn;
 				}
 			}
 		}
@@ -88,9 +84,9 @@ public class Grid {
                     }
                 }
             }
-			catch (ArrayIndexOutOfBoundsException e){
-				System.out.println("Invalid Move. Out of bounds, try again");
-			}
+            catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("Invalid Move. Out of bounds, try again");
+            }
         }
         else if(userMove.equals("u")){
             try {
@@ -115,61 +111,60 @@ public class Grid {
                 System.out.println("Invalid Move. Out of bounds, try again");
             }
         }
-			else if(userMove.equals("r")){
-                try {
-                    if (grid[numberRow][numberColumn + 1] == ' ') {
+		else if(userMove.equals("r")){
+           try {
+                if (grid[numberRow][numberColumn + 1] == ' ') {
+                    grid[numberRow][numberColumn] = ' ';
+                    grid[numberRow][numberColumn + 1] = enteredNumber;
+                    moveCounter += 1;
+                }
+                else {
+                    if (grid[numberRow][numberColumn + 2] == ' ') {
+                        grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow][numberColumn + 1] = enteredNumber;
-                        moveCounter += 1;
+                        moveCounter += 2;
                     }
                     else {
-                        if (grid[numberRow][numberColumn + 2] == ' ') {
-                            grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
-                            grid[numberRow][numberColumn] = ' ';
-                            grid[numberRow][numberColumn + 1] = enteredNumber;
-                            moveCounter += 2;
-                        }
-                        else {
-                            System.out.println("Invalid move. Spaces filled");
-                        }
+                        System.out.println("Invalid move. Spaces filled");
                     }
                 }
-                catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println("Invalid Move. Out of bounds, try again");
+            }
+            catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("Invalid Move. Out of bounds, try again");
+            }
+        }
+        else if(userMove.equals("l")){
+            try {
+                if (grid[numberRow][numberColumn - 1] == ' ') {
+                    grid[numberRow][numberColumn] = ' ';
+                    grid[numberRow][numberColumn - 1] = enteredNumber;
+                    moveCounter += 1;
                 }
-			}
-			/**else if(userMove.equals("l")){
-                try {
-                    if (grid[numberRow][numberColumn - 1] == ' ') {
+                else {
+                    if (grid[numberRow][numberColumn - 2] == ' ') {
+                        grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
                         grid[numberRow][numberColumn] = ' ';
                         grid[numberRow][numberColumn - 1] = enteredNumber;
-                        moveCounter += 1;
+                        moveCounter += 2;
                     }
                     else {
-                        if (grid[numberRow][numberColumn - 2] == ' ') {
-                            grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
-                            grid[numberRow][numberColumn] = ' ';
-                            grid[numberRow][numberColumn - 1] = enteredNumber;
-                            moveCounter += 2;
-                        }
-                        else {
-                            System.out.println("Invalid move. Spaces filled");
-                        }
+                        System.out.println("Invalid move. Spaces filled");
                     }
                 }
-                catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println("Invalid Move. Out of bounds, try again");
-                }
-			}
-			else{
-				System.out.println("Invalid move");
-			}
-            */
+            }
+            catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("Invalid Move. Out of bounds, try again");
+            }
+        }
+		else{
+			System.out.println("Invalid move");
+		}   
     }
     
     /**public void displayGrid(){
         System.out.print("GRID GOES HERE");
-    }*/
+    }
 	
 	public static void main(String[] args){
 		Scanner keyboard = new Scanner (System.in);
@@ -181,5 +176,5 @@ public class Grid {
 		grid1.setGridDiff(select);
 		grid1.makeGrid();
 		
-	}
+	}*/
 }
