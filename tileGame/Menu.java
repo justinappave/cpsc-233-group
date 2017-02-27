@@ -4,10 +4,10 @@ public class Menu{
 	private int newSelect = 0;
 	private int newTimer = 0;
 
-	public int quickPlay(int playSelect){
+	public int quickPlay(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("[1] Quickplay or [2] Menu?");
-		playSelect = keyboard.nextInt();
+		int playSelect = keyboard.nextInt();
 		if(playSelect == 1){
 			System.out.println("Starting quickplay...");
 		}
@@ -17,8 +17,7 @@ public class Menu{
 		else{
 			System.out.print("Invalid. Enter [1] Quickpay or [2] Menu.");
 		}
-		newSelect = playSelect;
-		return newSelect;
+		return playSelect;
 	}
 	public int mainMenu(){
 		Scanner keyboard = new Scanner(System.in);
@@ -41,7 +40,7 @@ public class Menu{
 		}
 		return modeSelect;
 	}
-	public void getDifficulty(){
+	public int getTimerDifficulty(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select difficulty: ");
 		System.out.println("1. Easy (5:00)");
@@ -60,7 +59,12 @@ public class Menu{
 		else{
 			System.out.println("Invalid. Select 1,2, or 3.");
 		}
+        return diffSelect;
 	}
+    
+    public int getNormalDifficulty() {
+        return 1;
+    }
     
     public String getName(){
         String name = "H";
