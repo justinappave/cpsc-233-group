@@ -20,13 +20,13 @@ public class Menu{
 		newSelect = playSelect;
 		return newSelect;
 	}
-	public int mainMenu(int modeSelect){
+	public int mainMenu(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select mode: ");
 		System.out.println("1. Timer");
 		System.out.println("2. Freeplay");
 		System.out.println("3. Leaderboards");
-		modeSelect = keyboard.nextInt();
+		int modeSelect = keyboard.nextInt();
 		if(modeSelect == 1){
 			System.out.println("Starting Timer...");
 		}
@@ -39,16 +39,15 @@ public class Menu{
 		else{
 			System.out.print("Invalid. Select 1,2, or 3.");
 		}
-		newTimer = modeSelect;
-		return newTimer;
+		return modeSelect;
 	}
-	public void getDifficulty(int diffSelect){
+	public void getDifficulty(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select difficulty: ");
 		System.out.println("1. Easy (5:00)");
 		System.out.println("2. Medium (3:00)");
 		System.out.println("3. Hard (1:00)");
-		diffSelect = keyboard.nextInt();
+		int diffSelect = keyboard.nextInt();
 		if(diffSelect == 1){
 			System.out.println("Starting easy difficulty...");
 		}
@@ -62,8 +61,13 @@ public class Menu{
 			System.out.println("Invalid. Select 1,2, or 3.");
 		}
 	}
+    
+    public String getName(){
+        String name = "H";
+        return name;
+    }
 
-	public static void main(String[] args){
+	/**public static void main(String[] args){
 		Menu game = new Menu();
 		game.quickPlay(0);
 		if(game.newSelect == 2){
@@ -73,4 +77,5 @@ public class Menu{
 			}
 		}
 	}
+    */
 }
