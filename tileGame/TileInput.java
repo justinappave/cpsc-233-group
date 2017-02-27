@@ -1,30 +1,35 @@
 import java.util.Scanner;
 
 public class TileInput{
-	int newX = 0;
-	int newY = 0;
 	
 	//obtain values of x and y from grid class
-	int[] getMove(int x, int y){
+	public int getMove(int x, int y){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("Enter move (W,A,S,D): ");
 		String input = keyboard.next();
 		if(input.equals("w")){
-			newY = y + 1;
+			y = y + 1;
+			return y;
 		}
 		else if(input.equals("s")){
-			newY = y - 1;
+			y = y - 1;
+			return y
 		}
 		else if(input.equals("d")){
-			newX = x + 1;
+			x = x + 1;
+			return x;
 		}
 		else if(input.equals("a")){
-			newX = x - 1;
+			x = x - 1;
+			return x;
 		}
 		else{
 			System.out.println("Invalid move!");
 		}
-		return new int[] {x, y};
+	}
+	
+	public int validInput(x, y){
+		
 	}
 	
 	public static void main(String[] args){
