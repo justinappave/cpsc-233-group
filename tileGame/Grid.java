@@ -48,6 +48,7 @@ public class Grid {
         int numberRow = 21;
 		int numberColumn = 21;
         int moveCounter = 0;
+		Scanner keyboard = new Scanner(System.in);
         System.out.println("Move Counter: " + moveCounter);
 		System.out.print("Select number to move: ");
 		char enteredNumber = keyboard.next(".").charAt(0);
@@ -63,8 +64,8 @@ public class Grid {
 					numberColumn = userColumn;
 				}
 				if(grid[userRow][userColumn] == ' '){
-					blankRow = userRow;
-					blankColumn = userColumn;
+					int blankRow = userRow;
+					int blankColumn = userColumn;
 				}
 			}
 		}
@@ -87,8 +88,9 @@ public class Grid {
                     }
                 }
             }
-        catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Invalid Move. Out of bounds, try again");
+			catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Invalid Move. Out of bounds, try again");
+			}
         }
         else if(userMove.equals("u")){
             try {
