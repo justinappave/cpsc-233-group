@@ -1,9 +1,14 @@
+/* This class is the main menu class. Prompts the user for quick play or
+to pick a difficulty. Leaderboard option and freeplay
+*/
+
 import java.util.Scanner;
 
 public class Menu{
 	private int newSelect = 0;
 	private int newTimer = 0;
 
+	//Quickplay GameMode
 	public int quickPlay(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("[1] Quickplay or [2] Menu?");
@@ -19,6 +24,8 @@ public class Menu{
 		}
 		return playSelect;
 	}
+
+	//Main Menu
 	public int mainMenu(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select mode: ");
@@ -40,6 +47,8 @@ public class Menu{
 		}
 		return modeSelect;
 	}
+
+	//Difficulty selection for Timer Mode
 	public int getTimerDifficulty(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select difficulty: ");
@@ -61,11 +70,13 @@ public class Menu{
 		}
         return diffSelect;
 	}
-    
+
+		//Gets Normal Mode difficulty
     public int getNormalDifficulty() {
         return 1;
     }
-    
+
+		//Gets Player name
     public String getName(){
         String name = "H";
         return name;
