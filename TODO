@@ -1,0 +1,7 @@
+To Do:
+
+-Update Grid to allow for larger grids (3X3,4X4,5X5), update other classes
+-Get Grid to create a random grid of a player chosen size (difficulty)
+-Split the movement into seperate methods for each direction
+-Get the timer working
+-Get Leaderboard to display the board and save the highscores
