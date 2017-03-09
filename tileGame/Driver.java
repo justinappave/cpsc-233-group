@@ -1,20 +1,45 @@
 public class Driver {
     public static void main(String[] args) {
-        boolean gameplay = false;
-        boolean quickplayOn = false;
+        boolean won;
         Menu gameMenu = new Menu();
+        Gameplay gameplay = new Gameplay();
         //Leaderboard leaderboard = new Leaderboard();
         
         int quickplay = gameMenu.quickPlay();
         if (quickplay == 1) {
-            gameplay = true;
-            quickplayOn = true;
+            gameplay.quickplay();
         }
+        
         else {
+            int gameMode = gameMenu.mainMenu();
+            if (gameMode == 1) { //TIME MODE
+                int difficulty = gameMenu.getTimerDifficulty();
+                won = gameplay.timeplay(difficulty);
+            }
+            else if (gameMode == 2) {
+                int size = gameMenu.getFreeplayDifficulty();
+                won = gameplay.freeplay(size, -1);
+                
+            }
+        }
+        /**else {
             int gameMode = gameMenu.mainMenu();
             if (gameMode == 1) {
                 int difficulty = gameMenu.getTimerDifficulty();
-                gameplay = true;
+                long startTime = System.currentTimeMillis();
+                long amountTime;
+                if (difficulty == 1) {
+                    amountTime = startTime + 300*1000;
+                }
+                else if (difficulty == 2) {
+                    amountTime = startTime + 180*1000;
+                }
+                else {
+                    amountTime = startTime + 60*1000;
+                }
+                while (System.currentTimeMillis() < amountTime) {
+                    //gameplay goes here
+                }
             }
             else if (gameMode == 2) {
                 int difficulty = gameMenu.getNormalDifficulty();
@@ -32,19 +57,20 @@ public class Driver {
                     System.out.println("Leaderboard error");
                 }
             }
-            */
-        }
+            
+        }*/
+        /**
         if (gameplay == true) {
             gameMenu.getName();
             GameWon checker = new GameWon();
             Grid gameGrid = new Grid();
-            int size = 3;
+            gameGrid.setSize(3);
             if (quickplayOn == false) {
                 gameGrid.getNewSize();
-                size = gameGrid.getSize();
+                int size = gameGrid.getSize();
             }
-            String[][] grid = gameGrid.makeGrid(size);
-            gameGrid.displayGrid(size);
+            String[][] grid = gameGrid.makeGrid();
+            gameGrid.displayGrid();
             int rowColumnNum = gameGrid.getSize();
         
             GameWon gameWon = new GameWon();
@@ -53,9 +79,9 @@ public class Driver {
             
             while (winner == false) {
                 gameGrid.makeMove(grid);
-                gameGrid.displayGrid(size);
+                gameGrid.displayGrid();
                 winner = gameWon.checkGame(grid, rowColumnNum);
             }
-        }
+        }*/
     }
 }

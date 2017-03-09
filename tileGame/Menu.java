@@ -1,14 +1,9 @@
-/* This class is the main menu class. Prompts the user for quick play or
-to pick a difficulty. Leaderboard option and freeplay
-*/
-
 import java.util.Scanner;
 
 public class Menu{
 	private int newSelect = 0;
 	private int newTimer = 0;
 
-	//Quickplay GameMode
 	public int quickPlay(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("[1] Quickplay or [2] Menu?");
@@ -20,12 +15,10 @@ public class Menu{
 			System.out.println("Moving to main menu...");
 		}
 		else{
-			System.out.print("Invalid. Enter [1] Quickpay or [2] Menu.");
+			System.out.print("Invalid. Enter [1] Quickplay or [2] Menu.");
 		}
 		return playSelect;
 	}
-
-	//Main Menu
 	public int mainMenu(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select mode: ");
@@ -47,8 +40,6 @@ public class Menu{
 		}
 		return modeSelect;
 	}
-
-	//Difficulty selection for Timer Mode
 	public int getTimerDifficulty(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select difficulty: ");
@@ -70,13 +61,34 @@ public class Menu{
 		}
         return diffSelect;
 	}
-
-		//Gets Normal Mode difficulty
-    public int getNormalDifficulty() {
-        return 1;
+    
+    public int getFreeplayDifficulty() {
+        Scanner keyboard = new Scanner(System.in);
+		System.out.println("Select difficulty: ");
+		System.out.println("1. Easy (3x3)");
+		System.out.println("2. Medium (4x4)");
+		System.out.println("3. Hard (5x5)");
+		int diffSelect = keyboard.nextInt();
+        int size;
+		if(diffSelect == 1){
+			System.out.println("Starting easy difficulty...");
+            size = 3;
+		}
+		else if(diffSelect == 2){
+			System.out.println("Starting medium difficulty...");
+            size = 4;
+		}
+		else if(diffSelect == 3){
+			System.out.println("Starting hard difficulty...");
+            size = 4;
+		}
+		else{
+			System.out.println("Invalid. Select 1,2, or 3.");
+            size = 0;
+		}
+        return size;
     }
-
-		//Gets Player name
+    
     public String getName(){
         String name = "H";
         return name;

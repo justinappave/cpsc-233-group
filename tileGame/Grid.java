@@ -15,17 +15,31 @@ public class Grid {
     private int emptyColumn;
     
     public void setEmptyRow(int row) {
-        emptyRow = row;
+        if (row >= 0) {
+            emptyRow = row;
+        }
+    }
+    
+    public int getEmptyRow() {
+        return emptyRow;
     }
 
     public void setEmptyColumn(int column) {
-        emptyColumn = column;
+        if (column >= 0) {
+            emptyColumn = column;
+        }
+    }
+    
+    public int getEmptyColumn() {
+        return emptyColumn;
     }
     
     private int size;
     
     public void setSize(int newSize) {
-        size = newSize;
+        if (newSize > 0) {
+            size = newSize;
+        }
     }
     
     public int getSize() {
@@ -65,8 +79,9 @@ public class Grid {
     }
 
     //This displays the elements of the String[][] grid with "|" in between, so it looks like a grid
-	public void displayGrid(int size){
+	public void displayGrid(){
 		//prints out the grid
+        int size = getSize();
 		for (int row = 0; row < size; row++){
 				System.out.print("|");
 				for (int column = 0; column < size; column++){
@@ -90,7 +105,8 @@ public class Grid {
     variable to have the correct size as well, then changes each entry of grid to correspond to the
     shuffled list placing the last entry as the blank spot.
     */
-    public String[][] makeGrid(int size) {
+    public String[][] makeGrid() {
+        int size = getSize();
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         for (int amount = 1; amount < (size*size); amount++) {
             numbers.add(new Integer(amount));
