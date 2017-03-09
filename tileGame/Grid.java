@@ -109,11 +109,16 @@ public class Grid {
             setGrid(hardConfig);
         }
         
+        grid = convertToGrid(numbers);
+        return grid;
+    }
+    
+    public String[][] convertToGrid(ArrayList<Integer> numberList) {
         int numCounter = 0;
         for (int rowCounter = 0; rowCounter < size; rowCounter++) {
             for (int columnCounter = 0; columnCounter < size; columnCounter++) {
                 if ((rowCounter*columnCounter) != ((size-1)*(size-1))) {
-                    grid[rowCounter][columnCounter] = Integer.toString(numbers.get(numCounter));
+                    grid[rowCounter][columnCounter] = Integer.toString(numberList.get(numCounter));
                     numCounter += 1;
                 }
                 else {
@@ -122,7 +127,7 @@ public class Grid {
             }
         }
         return grid;
-    }
+    }        
     
     //Prompts for user input involving tile movement, calls the correct method depending on choice
     public void makeMove(String[][] grid) {
