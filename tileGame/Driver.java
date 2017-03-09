@@ -1,44 +1,25 @@
-/*Driver class, runs the game and checks if the game is won after the user
-makes a move each time
-*/
-
 public class Driver {
-    private int difficulty;
-
-    public void setDifficulty(int newDifficulty) {
-        difficulty = newDifficulty;
-    }
-
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    //this runs the game, calls other classes
     public static void main(String[] args) {
         boolean gameplay = false;
+        boolean quickplayOn = false;
         Menu gameMenu = new Menu();
-
         //Leaderboard leaderboard = new Leaderboard();
-
+        
         int quickplay = gameMenu.quickPlay();
         if (quickplay == 1) {
             gameplay = true;
+            quickplayOn = true;
         }
         else {
             int gameMode = gameMenu.mainMenu();
-            //this is for the timer mode
             if (gameMode == 1) {
                 int difficulty = gameMenu.getTimerDifficulty();
                 gameplay = true;
             }
             else if (gameMode == 2) {
-                //free play mode
                 int difficulty = gameMenu.getNormalDifficulty();
                 gameplay = true;
             }
-
-            //for leaderboard, to be implemented
-
             /**else if (gameMode == 3) { // displays the leaderboard
                 int board = leaderboard.chooseBoard();
                 if (board = 0) { // displays the move leaderboard
@@ -53,25 +34,28 @@ public class Driver {
             }
             */
         }
-        //starts the game
         if (gameplay == true) {
             gameMenu.getName();
             GameWon checker = new GameWon();
             Grid gameGrid = new Grid();
-            char[][] grid = gameGrid.makeGrid();
-            gameGrid.displayGrid();
-            int rowColumnNum = gameGrid.getBounds();
-
-            //checks to see if you have the correct grid to win
+            int size = 3;
+            if (quickplayOn == false) {
+                gameGrid.getNewSize();
+                size = gameGrid.getSize();
+            }
+            String[][] grid = gameGrid.makeGrid(size);
+            gameGrid.displayGrid(size);
+            int rowColumnNum = gameGrid.getSize();
+        
             GameWon gameWon = new GameWon();
+            
             boolean winner = gameWon.checkGame(grid, rowColumnNum);
-
+            
             while (winner == false) {
-                gameGrid.makeMove();
-                gameGrid.displayGrid();
+                gameGrid.makeMove(grid);
+                gameGrid.displayGrid(size);
                 winner = gameWon.checkGame(grid, rowColumnNum);
             }
-            System.out.println("Congrats, you won!");
         }
     }
 }

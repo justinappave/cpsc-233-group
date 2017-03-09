@@ -1,168 +1,209 @@
-/* This class prints the grid and moves the number the user specifies 
+
+/* 
+This class prints the grid and moves the number the user specifies 
 */
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
 
 public class Grid {
-	static char[][] easyConfig = {
-		{'1','2','3'},
-		{'4','5','6'},
-		{'7',' ','8'}
+    private String EMPTY = " ";
+    
+    private int emptyRow;
+    private int emptyColumn;
+    
+    public void setEmptyRow(int row) {
+        emptyRow = row;
+    }
+
+    public void setEmptyColumn(int column) {
+        emptyColumn = column;
+    }
+    
+    private int size;
+    
+    public void setSize(int newSize) {
+        size = newSize;
+    }
+    
+    public int getSize() {
+        return size;
+    }
+    
+    public String[][] grid;
+    
+    static String[][] babyConfig = {
+        {" "," "},
+        {" "," "}
+    };
+    
+	static String[][] easyConfig = {
+		{" "," "," "},
+		{" "," "," "},
+		{" "," "," "}
 	};
 
-	static char[][] mediumConfig = {
-		{'3','8','4'},
-		{' ','1','7'},
-		{'6','5','2'}
-	};
+	static String[][] mediumConfig = {
+		{" "," "," "," "},
+		{" "," "," "," "},
+		{" "," "," "," "},
+        {" "," "," "," "}
+    };
+    
+    static String[][] hardConfig = {
+        {" "," "," "," "," "},
+        {" "," "," "," "," "},
+        {" "," "," "," "," "},
+        {" "," "," "," "," "},
+        {" "," "," "," "," "}
+    };
 
-	char[][] grid = easyConfig;
+	public void setGrid(String[][] newGridSize) { //sets the grid to be the correct template
+        grid = newGridSize;
+    }
 
-
-	public void displayGrid(){
+    //This displays the elements of the String[][] grid with "|" in between, so it looks like a grid
+	public void displayGrid(int size){
 		//prints out the grid
-		for (int row = 0; row < 3; row++){
+		for (int row = 0; row < size; row++){
 				System.out.print("|");
-				for (int column = 0; column < 3; column++){
+				for (int column = 0; column < size; column++){
 					System.out.print(grid[row][column] + "|");
 			}
 			System.out.println();
 		}
 	}
 
-    public int getBounds() {
-        return 3;
-    }
-
-	public void setGridDiff(int difficultySelect){
-		//sets which grid to the difficulty selected
-		if(difficultySelect == 1){
-			grid = easyConfig;
-		}
-		else if(difficultySelect == 2){
-			grid = mediumConfig;
-		}
+    //This prompts the user for what size/difficulty they want then changes the variable by calling "setSize"
+	public void getNewSize() {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("What size/difficulty? (2,3,4,5)");
+        String sizeStr = keyboard.nextLine();
+        int size = Integer.parseInt(sizeStr);
+        setSize(size);
 	}
 
-    public char[][] makeGrid() {
-        return easyConfig;
+    /** creates the grid. It first makes an arraylist called "numbers" of the correct size depending on 
+    difficulty, then shuffles that list using "Collection.shuffle(numbers)". It then sets the grid
+    variable to have the correct size as well, then changes each entry of grid to correspond to the
+    shuffled list placing the last entry as the blank spot.
+    */
+    public String[][] makeGrid(int size) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (int amount = 1; amount < (size*size); amount++) {
+            numbers.add(new Integer(amount));
+        }
+        Collections.shuffle(numbers);
+        if (size == 2) {
+            setGrid(babyConfig);
+        }
+        else if (size == 3) {
+            setGrid(easyConfig);
+        }
+        else if (size == 4) {
+            setGrid(mediumConfig);
+        }
+        else if (size == 5) {
+            setGrid(hardConfig);
+        }
+        
+        int numCounter = 0;
+        for (int rowCounter = 0; rowCounter < size; rowCounter++) {
+            for (int columnCounter = 0; columnCounter < size; columnCounter++) {
+                if ((rowCounter*columnCounter) != ((size-1)*(size-1))) {
+                    grid[rowCounter][columnCounter] = Integer.toString(numbers.get(numCounter));
+                    numCounter += 1;
+                }
+                else {
+                    grid[rowCounter][columnCounter] = EMPTY;
+                }
+            }
+        }
+        return grid;
     }
-
-    public void makeMove() {   //gets input from user, selects number and where to move it
-        int numberRow = 21;
-				int numberColumn = 21;
-        int moveCounter = 0;
-        System.out.println("Move Counter: " + moveCounter);
-				System.out.print("Select number to move: ");
+    
+    //Prompts for user input involving tile movement, calls the correct method depending on choice
+    public void makeMove(String[][] grid) {
+        System.out.println("Which direction would you like to move? (W,A,S,D)");
         Scanner keyboard = new Scanner(System.in);
-				char enteredNumber = keyboard.next(".").charAt(0);
-				System.out.print("Where would you like to move that number: ");
-				String userMove = keyboard.next();
-
-		/*finds what row and column the number the user entered is at
-		and also finds what row and column the blank spot is at*/
-			for(int userRow = 0; userRow < grid.length; userRow++){
-				for(int userColumn = 0; userColumn < grid.length; userColumn++){
-					if(grid[userRow][userColumn] == enteredNumber){
-						numberRow = userRow;
-						numberColumn = userColumn;
-					}
-				}
-			}
-      if(userMove.equals("s")){ //moves down
-          try { // makes sure user move is in playing field bounds
-                if (grid[numberRow + 1][numberColumn] == ' ') { // case where adjacent space is empty
-                    grid[numberRow][numberColumn] = ' ';
-                    grid[numberRow + 1][numberColumn] = enteredNumber;
-                    moveCounter += 1;
+        String direction = keyboard.nextLine();
+        for(int row = 0; row < grid.length; row++) {
+            for(int column = 0; column < grid.length; column++) {
+                if (grid[row][column] == " ") {
+                    setEmptyRow(row);
+                    setEmptyColumn(column);
                 }
-                else { //case where adjacent space is not empty, allows for moving two pieces at once
-                    if (grid[numberRow + 2][numberColumn] == ' ') {
-                        grid[numberRow + 2][numberColumn] = grid[numberRow + 1][numberColumn];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow + 1][numberColumn] = enteredNumber;
-                        moveCounter += 2;
-                    }
-                    else {
-                        System.out.println("Invalid move. Spaces filled");
-                    }
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("Invalid Move. Out of bounds, try again");
             }
         }
-        else if(userMove.equals("w")){ //moves up
-            try {
-                if (grid[numberRow - 1][numberColumn] == ' ') {
-                    grid[numberRow][numberColumn] = ' ';
-                    grid[numberRow - 1][numberColumn] = enteredNumber;
-                    moveCounter += 1;
+        //setSpaceRowColumn(String[][] grid);
+        if (direction.equals("w")) {
+            moveUp();
+        }
+        else if (direction.equals("s")) {
+            moveDown();
+        }
+        else if (direction.equals("a")) {
+            moveLeft();
+        }
+        else if (direction.equals("d")) {
+            moveRight();
+        }
+        else {
+            System.out.println("Invalid direction, that letter doesn't work");
+        }
+    }
+    
+    //finds the location of the empty space in the grid and stores the values in emptyRow and emptyColumn
+    public void setSpaceRowColumn(String[][] findGrid) {
+        for(int row = 0; row < findGrid.length; row++) {
+            for(int column = 0; column < findGrid.length; column++) {
+                if (findGrid[row][column] == " ") {
+                    setEmptyRow(row);
+                    setEmptyColumn(column);
                 }
-                else {
-                    if (grid[numberRow - 2][numberColumn] == ' ') {
-                        grid[numberRow - 2][numberColumn] = grid[numberRow - 1][numberColumn];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow - 1][numberColumn] = enteredNumber;
-                        moveCounter += 2;
-                    }
-                    else {
-                        System.out.println("Invalid move. Spaces filled");
-                    }
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("Invalid Move. Out of bounds, try again");
             }
         }
-		else if(userMove.equals("d")){ //moves right
-           try {
-                if (grid[numberRow][numberColumn + 1] == ' ') {
-                    grid[numberRow][numberColumn] = ' ';
-                    grid[numberRow][numberColumn + 1] = enteredNumber;
-                    moveCounter += 1;
-                }
-                else {
-                    if (grid[numberRow][numberColumn + 2] == ' ') {
-                        grid[numberRow][numberColumn + 2] = grid[numberRow][numberColumn + 1];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow][numberColumn + 1] = enteredNumber;
-                        moveCounter += 2;
-                    }
-                    else {
-                        System.out.println("Invalid move. Spaces filled");
-                    }
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("Invalid Move. Out of bounds, try again");
-            }
+    }
+    
+    public void moveUp() { //moves tile below empty space into empty space is called when "w" is pressed
+        try {
+            grid[emptyRow][emptyColumn] = grid[emptyRow+1][emptyColumn];
+            grid[emptyRow+1][emptyColumn] = EMPTY;
         }
-        else if(userMove.equals("a")){ //moves left
-            try {
-                if (grid[numberRow][numberColumn - 1] == ' ') {
-                    grid[numberRow][numberColumn] = ' ';
-                    grid[numberRow][numberColumn - 1] = enteredNumber;
-                    moveCounter += 1;
-                }
-                else {
-                    if (grid[numberRow][numberColumn - 2] == ' ') {
-                        grid[numberRow][numberColumn - 2] = grid[numberRow][numberColumn - 1];
-                        grid[numberRow][numberColumn] = ' ';
-                        grid[numberRow][numberColumn - 1] = enteredNumber;
-                        moveCounter += 2;
-                    }
-                    else {
-                        System.out.println("Invalid move. Spaces filled");
-                    }
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                System.out.println("Invalid Move. Out of bounds, try again");
-            }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Invalid Move. Out of bounds, try again");
         }
-		else{
-			System.out.println("Invalid move");
-		}
+    }
+    
+    public void moveDown() { //moves tile above empty space into empty space is called when "s" is pressed
+        try {
+            grid[emptyRow][emptyColumn] = grid[emptyRow-1][emptyColumn];
+            grid[emptyRow-1][emptyColumn] = EMPTY;
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Invalid Move. Out of bounds, try again");
+        }
+    }
+    
+    public void moveLeft() { //moves tile right of empty space into empty space is called when "a" is pressed
+        try {
+            grid[emptyRow][emptyColumn] = grid[emptyRow][emptyColumn+1];
+            grid[emptyRow][emptyColumn+1] = EMPTY;
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Invalid Move. Out of bounds, try again");
+        }
+    }
+    
+    public void moveRight() { //moves tile left of empty space into empty space is called when "d" is pressed
+        try {
+            grid[emptyRow][emptyColumn] = grid[emptyRow][emptyColumn-1];
+            grid[emptyRow][emptyColumn-1] = EMPTY;
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Invalid Move. Out of bounds, try again");
+        }
     }
 }
