@@ -1,74 +1,86 @@
+/**
+To Run type:
+javac -cp .;junit-4.12.jar;hamcrest-core-1.3.jar *.java
+java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore GameWonTest
+*/
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 public class GameWonTest {
-    static char[][] testGrid1 = {
-        {'1','2','3'},
-        {'4','5','6'},
-        {'7',' ','8'}
-    };
     
-    static char[][] testGrid2 = {
-        {'1','2','3'},
-        {'4','5','6'},
-        {'7','8',' '}
-    };
+    @Test
+    public void test_checkGame3x3Win() {
+        GameWon g1 = new GameWon();
+        String[][] win3by3 = {
+            {"1","2","3"},
+            {"4","5","6"},
+            {"7","8"," "}
+        };
+        assertEquals("Should win the game", true, g1.checkGame(win3by3, 3));
+    }
     
-    static char[][] testGrid3 = {
-        {'8','4','3'},
-        {'2','7','6'},
-        {'5','1',' '}
-    };
+    @Test
+    public void test_checkGame3x3Lose() {
+        GameWon g1 = new GameWon();
+        String[][] lose3by3 = {
+            {"1","2","3"},
+            {"4","5","6"},
+            {"7"," ","8"}
+        };
+        assertEquals("Should win the game", false, g1.checkGame(lose3by3, 3));
+    }
     
-    static char[][] testGrid4 = {
-        {'8','4','3'},
-        {'2',' ','6'},
-        {'5','1',' '}
-    };
+    @Test
+    public void test_checkGame4x4Win() {
+        GameWon g1 = new GameWon();
+        String[][] win4by4 = {
+            {"1","2","3","4"},
+            {"5","6","7","8"},
+            {"9","10","11","12"},
+            {"13","14","15"," "}
+        };
+        assertEquals("Should win the game", true, g1.checkGame(win4by4, 4));
+    }
     
-    static char[][] testGrid5 = {
-        {' ',' ',' '},
-        {' ',' ',' '},
-        {' ',' ',' '}
-    };
+    @Test
+    public void test_checkGame4x4Lose() {
+        GameWon g1 = new GameWon();
+        String[][] lose4by4 = {
+            {"1","2","3","4"},
+            {"5","6","7","8"},
+            {"9","10","11","12"},
+            {"13","14"," ","15"}
+        };
+        assertEquals("Should win the game", false, g1.checkGame(lose4by4, 4));
+    }
     
-    static char[][] testGrid6 = {
-        {'1','1','1'},
-        {'1','1','1'},
-        {'1','1','1'}
-    };
+    @Test
+    public void test_checkGame5x5Win() {
+        GameWon g1 = new GameWon();
+        String[][] win5by5 = {
+            {"1","2","3","4","5"},
+            {"6","7","8","9","10"},
+            {"11","12","13","14","15"},
+            {"16","17","18","19","20"},
+            {"21","22","23","24"," "}
+        };
+        assertEquals("Should win the game", true, g1.checkGame(win5by5, 5));
+    }
     
-    public static void main(String[] args) {
-        
-        
-        //Testing method "checkGame" in class "GameWon"
-        boolean debug = true;
-        GameWon test = new GameWon();
-        System.out.println("Testing testGrid1: ");
-        boolean testGrid1win = test.checkGame(testGrid1, 3);
-        System.out.println("Won game? " + testGrid1win + ". Expected false");
-        
-        GameWon test2 = new GameWon();
-        System.out.println("Testing testGrid2: ");
-        boolean test2Gridwin = test2.checkGame(testGrid2, 3);
-        System.out.println("Won game? " + test2Gridwin + ". Expected true");
-        
-        GameWon test3 = new GameWon();
-        System.out.println("Testing testGrid3: ");
-        boolean test3Gridwin = test3.checkGame(testGrid3, 3);
-        System.out.println("Won game? " + test3Gridwin + ". Expected false");
-        
-        GameWon test4 = new GameWon();
-        System.out.println("Testing testGrid4: ");
-        boolean test4Gridwin = test4.checkGame(testGrid4, 3);
-        System.out.println("Won game? " + test4Gridwin + ". Expected false");
-        
-        GameWon test5 = new GameWon();
-        System.out.println("Testing testGrid5: ");
-        boolean test5Gridwin = test5.checkGame(testGrid5, 3);
-        System.out.println("Won game? " + test5Gridwin + ". Expected false");
-        
-        GameWon test6 = new GameWon();
-        System.out.println("Testing testGrid6: ");
-        boolean test6Gridwin = test6.checkGame(testGrid6, 3);
-        System.out.println("Won game? " + test6Gridwin + ". Expected false");
-        
+    @Test
+    public void test_checkGame5x5Lose() {
+        GameWon g1 = new GameWon();
+        String[][] lose5by5 = {
+            {"1","2","3","4","5"},
+            {"6","7","8","9","10"},
+            {"11","12","13","14","15"},
+            {"16","17","18","19","20"},
+            {"21","22","23"," ","24"}
+        };
+        assertEquals("Should win the game", false, g1.checkGame(lose5by5, 5));
     }
 }
+        
+    
