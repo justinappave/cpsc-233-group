@@ -12,7 +12,7 @@ public class Gameplay {
             amountTime = startTime + 180*1000;
         }
         else {
-            amountTime = startTime + 60*1000;
+            amountTime = startTime + 10*1000;
         }
         while (System.currentTimeMillis() < amountTime) {
             winner = freeplay(3, amountTime);

@@ -93,6 +93,18 @@ public class Menu{
         String name = "H";
         return name;
     }
+    
+    public boolean playAgain() {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Press \"1\" to Exit");
+        System.out.println("Or press anything to play again");
+        String choice = keyboard.nextLine();
+        boolean again = true;
+        if (choice == "1") {
+            again = false;
+        }
+        return again;
+    }
 
 	/**public static void main(String[] args){
 		Menu game = new Menu();
