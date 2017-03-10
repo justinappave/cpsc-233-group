@@ -1,3 +1,6 @@
+//timer runs for amount of seconds set
+//numbers do not show countdown yet
+
 import java.awt.*;
 import java.util.Timer; //schedule thread to execute at certain time
 import java.util.TimerTask; //runnable interface, extend to add own timer
@@ -10,10 +13,10 @@ public class TimerDemo {
   public TimerDemo(int seconds) {
     toolkit = Toolkit.getDefaultToolkit();
     timer = new Timer();
-    timer.schedule(new RemindTask(), seconds * 1000); //time in milliseconds
+    timer.schedule(new setTask(), seconds * 1000); //time in milliseconds
   }
 
-  class RemindTask extends TimerTask {
+  class setTask extends TimerTask {
     public void run() {
       System.out.println("Time's up!");
       toolkit.beep();//add sound when timers up
