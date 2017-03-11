@@ -2,9 +2,10 @@ public class Driver {
     public static void main(String[] args) {
         boolean won;
         boolean keepPlaying = true;
+        int moveCount;
         Menu gameMenu = new Menu();
         Gameplay gameplay = new Gameplay();
-        //Leaderboard leaderboard = new Leaderboard();
+        Leaderboard leaderboard = new Leaderboard();
         
         while (keepPlaying == true) {
             int quickplay = gameMenu.quickPlay();
@@ -26,7 +27,16 @@ public class Driver {
                     int size = gameMenu.getFreeplayDifficulty();
                     won = gameplay.freeplay(size, -1);
                     
+                    if (won == true) {
+                        String playerName = gameMenu.getName();
+                        moveCount = gameplay.getMoveCount();
+                        //leaderboard.addNewHighscore();
+                    }
                     keepPlaying = gameMenu.playAgain();
+                }
+                else if (gameMode == 3) {
+                    //leaderboard.displayHighscores
+                    System.out.println("Leaderboards here");
                 }
             }
         }

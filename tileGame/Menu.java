@@ -90,7 +90,9 @@ public class Menu{
     }
     
     public String getName(){
-        String name = "H";
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("Enter name: ");
+        String name = keyboard.nextLine();
         return name;
     }
     
