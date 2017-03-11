@@ -49,9 +49,10 @@ public class Grid {
     public String[][] grid;
     
     static String[][] babyConfig = {
-        {" "," "},
-        {" "," "}
-    };
+		{"1","2","3"},
+		{"4","5","6"},
+		{"7"," ","8"}
+	};
     
 	static String[][] easyConfig = {
 		{" "," "," "},
@@ -79,7 +80,7 @@ public class Grid {
     }
 
     //This displays the elements of the String[][] grid with "|" in between, so it looks like a grid
-	public void displayGrid(){
+	public void displayGrid(int moveCount){
 		//prints out the grid
         int size = getSize();
 		for (int row = 0; row < size; row++){
@@ -89,16 +90,9 @@ public class Grid {
 			}
 			System.out.println();
 		}
+        System.out.println("Moves: " + moveCount);
 	}
 
-    //This prompts the user for what size/difficulty they want then changes the variable by calling "setSize"
-	public void getNewSize() {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("What size/difficulty? (2,3,4,5)");
-        String sizeStr = keyboard.nextLine();
-        int size = Integer.parseInt(sizeStr);
-        setSize(size);
-	}
 
     /** creates the grid. It first makes an arraylist called "numbers" of the correct size depending on 
     difficulty, then shuffles that list using "Collection.shuffle(numbers)". It then sets the grid
@@ -146,8 +140,9 @@ public class Grid {
     }        
     
     //Prompts for user input involving tile movement, calls the correct method depending on choice
-    public void makeMove(String[][] grid) {
-        System.out.println("Which direction would you like to move? (W,A,S,D)");
+    public boolean makeMove(String[][] grid) {
+        boolean returnToMenu = false;
+        System.out.println("Which direction would you like to move? (W,A,S,D). Or press e to quit");
         Scanner keyboard = new Scanner(System.in);
         String direction = keyboard.nextLine();
         for(int row = 0; row < grid.length; row++) {
@@ -171,9 +166,13 @@ public class Grid {
         else if (direction.equals("d")) {
             moveRight();
         }
+        else if (direction.equals("e")) {
+            returnToMenu = true;
+        }
         else {
             System.out.println("Invalid direction, that letter doesn't work");
         }
+        return returnToMenu;
     }
     
     //finds the location of the empty space in the grid and stores the values in emptyRow and emptyColumn

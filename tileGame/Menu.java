@@ -98,11 +98,11 @@ public class Menu{
     
     public boolean playAgain() {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Press \"1\" to Exit");
-        System.out.println("Or press anything to play again");
+        System.out.println("Press \"e\" again to Quit game");
+        System.out.println("Or press anything else to play another game");
         String choice = keyboard.nextLine();
         boolean again = true;
-        if (choice == "1") {
+        if (choice.equals("e")) {
             again = false;
         }
         return again;

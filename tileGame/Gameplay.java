@@ -1,4 +1,16 @@
 public class Gameplay {
+    private int moveCount = 0;
+    
+    public void increaseMoveCount() {
+        moveCount ++;
+    }
+    
+    public int getMoveCount() {
+        return moveCount;
+    }
+    
+    
+    
     public boolean timeplay(int difficulty) {
         boolean winner = false;
         GameWon checker = new GameWon();
@@ -25,22 +37,26 @@ public class Gameplay {
         Grid game = new Grid();
         game.setSize(size);
         String[][] grid = game.makeGrid();
-        game.displayGrid();
+        game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
         GameWon gameWon = new GameWon();
             
         boolean winner = gameWon.checkGame(grid, rowColumnNum);
+        boolean wantQuit = false;
             
-        while (winner == false) {
+        while ((winner == false) && (wantQuit == false)) {
             long currentTime = System.currentTimeMillis();
             if ((currentTime > endTime) && (endTime != -1)) {
                 System.out.println("Out of time!");
                 break;
             }
-            game.makeMove(grid);
-            game.displayGrid();
-            winner = gameWon.checkGame(grid, rowColumnNum);
+            wantQuit = game.makeMove(grid);
+            if (wantQuit == false) {
+                increaseMoveCount();
+                game.displayGrid(moveCount);
+                winner = gameWon.checkGame(grid, rowColumnNum);
+            }
         }
         return winner;
     }
@@ -50,17 +66,21 @@ public class Gameplay {
         Grid game = new Grid();
         game.setSize(3);
         String[][] grid = game.makeGrid();
-        game.displayGrid();
+        game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
         GameWon gameWon = new GameWon();
             
         boolean winner = gameWon.checkGame(grid, rowColumnNum);
+        boolean wantQuit = false;
             
-        while (winner == false) {
-            game.makeMove(grid);
-            game.displayGrid();
-            winner = gameWon.checkGame(grid, rowColumnNum);
+        while ((winner == false) && (wantQuit == false)) {
+            wantQuit = game.makeMove(grid);
+            if (wantQuit == false) {
+                increaseMoveCount();
+                game.displayGrid(moveCount);
+                winner = gameWon.checkGame(grid, rowColumnNum);
+            }
         }
     }
 }
