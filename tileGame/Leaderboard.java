@@ -1,5 +1,4 @@
-/** Work in progress...!
-**/
+package test;
 
 import java.util.*;
 import java.io.*;
@@ -30,5 +29,37 @@ public class Leaderboard{
 
     public String toString (){
         return playerid+"\t "+playerscore;
+    }
+    
+    public void loadScores() throws FileNotFoundException{
+    	read = new Scanner(new FileReader("scores.txt"));
+    	while(read.hasNext()){
+    		n.add(read.next());
+    		s.add(read.nextInt());
+    	}
+    }
+    
+    public void evaluateScores(){
+    	int u;
+    	n.add(playerid);
+    	s.add(playerscore);
+    	
+    	for(u = 0; u < n.size(); ++u){
+    		players.add(new Leaderboard(n.get(u), s.get(u)));
+    	}
+    }
+    
+    public void writeScores() throws FileNotFoundException{
+    	write = new PrintWriter("scores.rtf");
+    	for(int z = 0; z <n.size(); ++z){
+    		write.print(n.get(z)+" ");
+    		write.println(s.get(z));
+    	}
+    	write.close();
+    }
+    
+    public static void main(String[] args){
+    	Leaderboard player1 = new Leaderboard("Justin", 100);
+    	
     }
 }
