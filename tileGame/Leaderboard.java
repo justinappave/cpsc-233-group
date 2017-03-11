@@ -1,4 +1,5 @@
-package test;
+/**Work in progress still
+**/
 
 import java.util.*;
 import java.io.*;
@@ -58,6 +59,7 @@ public class Leaderboard{
     	write.close();
     }
     
+    //Testing
     public static void main(String[] args){
     	Leaderboard player1 = new Leaderboard("Justin", 100);
     	
