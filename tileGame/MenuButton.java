@@ -6,6 +6,10 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*
+ * after each button click, the previous, frame should close
+ */
+
 public class MenuButton {
 public static void main(String[] args){
 	
@@ -26,6 +30,7 @@ public static void main(String[] args){
 	
 	quickButton.addActionListener(new quickAction());
 	menuButton.addActionListener(new menuAction());
+	exitButton.addActionListener(new exitAction());
 }
 	static class quickAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
@@ -47,6 +52,11 @@ public static void main(String[] args){
 			JPanel panel = new JPanel();
 			frame2.add(panel);
 			panel.add(label);
+		}
+	}
+	static class exitAction implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+			//need frame closing action here
 		}
 	}
 }
