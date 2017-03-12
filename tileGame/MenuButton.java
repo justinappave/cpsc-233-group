@@ -24,14 +24,20 @@ public static void main(String[] args){
 	JButton menuButton = new JButton("Menu");
 	JButton exitButton = new JButton("Exit");
 	
+	//add Quickplay,MainMenu,Exit button
 	panel.add(quickButton);
 	panel.add(menuButton);
 	panel.add(exitButton);
 	
+	/*adds the ActionListeners for
+	 * Quickplay,MainMenu,Exit buttons
+	 */
 	quickButton.addActionListener(new quickAction());
 	menuButton.addActionListener(new menuAction());
 	exitButton.addActionListener(new exitAction());
 }
+	//ActionListener for menuAction
+	//Frame for Quickplay
 	static class quickAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			JFrame quickFrame = new JFrame("Quickplay");
@@ -43,6 +49,8 @@ public static void main(String[] args){
 			panel.add(label);
 		}
 	}
+	//ActionListener for menuAction
+	//Frame for Main Menu
 	static class menuAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			JFrame menuFrame = new JFrame("Main Menu");
@@ -56,17 +64,23 @@ public static void main(String[] args){
 			JButton leaderButton = new JButton("Leaderboards");
 			JButton exitButton = new JButton("Exit");
 			
+			//add Freeplay,Timeplay,Leaderboards,Exit buttons
 			panel.add(freeButton);
 			panel.add(timeButton);
 			panel.add(leaderButton);
 			panel.add(exitButton);
 			
+			/*adds the ActionListeners for
+			 * Freeplay,Timeplay,Leaderboards,Exit buttons
+			 */
 			freeButton.addActionListener(new freeAction());
 			timeButton.addActionListener(new timeAction());
 			leaderButton.addActionListener(new leaderAction());
 			exitButton.addActionListener(new exitAction());
 		}
 	}
+	//ActionListener for freeAction
+	//Frame for Freeplay
 	static class freeAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			JFrame freeFrame = new JFrame("Freeplay");
@@ -78,6 +92,8 @@ public static void main(String[] args){
 			panel.add(label);
 		}
 	}
+	//ActionListener for timeAction
+	//Frame for Timeplay
 	static class timeAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			JFrame timeFrame = new JFrame("Timeplay");
@@ -89,6 +105,8 @@ public static void main(String[] args){
 			panel.add(label);
 		}
 	}
+	//ActionListener for leaderAction
+	//Frame for Leaderboards
 	static class leaderAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			JFrame leaderFrame = new JFrame("Leaderboards");
@@ -100,6 +118,7 @@ public static void main(String[] args){
 			panel.add(label);
 		}
 	}
+	//ActionListener for exitAction
 	static class exitAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			//still needs exit action
