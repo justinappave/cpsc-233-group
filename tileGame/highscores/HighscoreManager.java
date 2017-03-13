@@ -80,7 +80,7 @@ public class HighscoreManager {
 
   public String getHighscoreString() {
     String highscoreString = "";
-    Static int max = 10;
+    final int max = 10;
 
     ArrayList<Score> scores;
     scores = getScores();
