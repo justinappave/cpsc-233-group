@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  */
 
 public class MenuButton {
-public static void main(String[] args){
+	public static void main(String[] args){
 	
 	JFrame frame = new JFrame("Tile Game");
 	frame.setVisible(true);
@@ -123,6 +123,7 @@ public static void main(String[] args){
 	//ActionListener for exitAction
 	static class exitAction implements ActionListener{
 		public void actionPerformed (ActionEvent e){
+			System.exit(1); //System.exit is temporary
 			//still needs exit action
 		}
 	}
