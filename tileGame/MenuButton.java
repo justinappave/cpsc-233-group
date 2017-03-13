@@ -1,6 +1,6 @@
 //work in progress
 
-package swing;
+package tilegame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -105,10 +105,24 @@ public class MenuButton {
 			JFrame timeFrame = new JFrame("Timeplay");
 			timeFrame.setVisible(true);
 			timeFrame.setSize(500,500);
-			JLabel label = new JLabel("Starting Timeplay...");
 			JPanel panel = new JPanel();
 			timeFrame.add(panel);
-			panel.add(label);
+			timeFrame.setResizable(false);
+			
+			JButton easyTime = new JButton("Easy (5:00)");
+			JButton mediumTime = new JButton("Medium (3:00)");
+			JButton hardTime = new JButton("Hard (1:00)");
+			JButton exitButton = new JButton("Exit");
+			
+			panel.add(easyTime);
+			panel.add(mediumTime);
+			panel.add(hardTime);
+			panel.add(exitButton);
+			
+			easyTime.addActionListener(new easyAction());
+			mediumTime.addActionListener(new mediumAction());
+			hardTime.addActionListener(new hardAction());
+			exitButton.addActionListener(new exitAction());
 		}
 	}
 	//ActionListener for leaderAction
@@ -123,6 +137,42 @@ public class MenuButton {
 			leaderFrame.add(panel);
 			panel.add(label);
 			leaderFrame.setResizable(false);
+		}
+	}
+	static class easyAction implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+			JFrame easyFrame = new JFrame("Timeplay (Easy)");
+			easyFrame.setVisible(true);
+			easyFrame.setSize(500,500);
+			JLabel label = new JLabel("Starting Timeplay (Easy difficulty)");
+			JPanel panel = new JPanel();
+			easyFrame.add(panel);
+			panel.add(label);
+			easyFrame.setResizable(false);
+		}
+	}
+	static class mediumAction implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+			JFrame mediumFrame = new JFrame("Timeplay (Medium)");
+			mediumFrame.setVisible(true);
+			mediumFrame.setSize(500,500);
+			JLabel label = new JLabel("Starting Timeplay (Medium difficulty)");
+			JPanel panel = new JPanel();
+			mediumFrame.add(panel);
+			panel.add(label);
+			mediumFrame.setResizable(false);
+		}
+	}
+	static class hardAction implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+			JFrame hardFrame = new JFrame("Timeplay (Hard)");
+			hardFrame.setVisible(true);
+			hardFrame.setSize(500,500);
+			JLabel label = new JLabel("Starting Timeplay (Hard difficulty)");
+			JPanel panel = new JPanel();
+			hardFrame.add(panel);
+			panel.add(label);
+			hardFrame.setResizable(false);
 		}
 	}
 	//ActionListener for exitAction
