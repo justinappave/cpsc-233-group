@@ -4,4 +4,4 @@ To Do:
 -Get Grid to create a random grid of a player chosen size (difficulty)
 -Split the movement into seperate methods for each direction
 -Get the timer working (Travis)
-// [DONE] -Get Leaderboard to display the board and save the highscores (Justin)
+[DONE] -Get Leaderboard to display the board and save the highscores (Justin)
