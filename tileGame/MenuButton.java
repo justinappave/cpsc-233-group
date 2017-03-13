@@ -21,6 +21,7 @@ public class MenuButton {
 	frame.setSize(500,500);
 	JPanel panel = new JPanel();
 	frame.add(panel);
+	frame.setResizable(false);
 	
 	JButton quickButton = new JButton("Quickplay");
 	JButton menuButton = new JButton("Menu");
@@ -49,6 +50,7 @@ public class MenuButton {
 			JPanel panel = new JPanel();
 			quickFrame.add(panel);
 			panel.add(label);
+			quickFrame.setResizable(false);
 		}
 	}
 	//ActionListener for menuAction
@@ -60,6 +62,7 @@ public class MenuButton {
 			menuFrame.setSize(500,500);
 			JPanel panel = new JPanel();
 			menuFrame.add(panel);
+			menuFrame.setResizable(false);
 			
 			JButton freeButton = new JButton("Freeplay");
 			JButton timeButton = new JButton("Timeplay");
@@ -92,6 +95,7 @@ public class MenuButton {
 			JPanel panel = new JPanel();
 			freeFrame.add(panel);
 			panel.add(label);
+			freeFrame.setResizable(false);
 		}
 	}
 	//ActionListener for timeAction
@@ -118,6 +122,7 @@ public class MenuButton {
 			JPanel panel = new JPanel();
 			leaderFrame.add(panel);
 			panel.add(label);
+			leaderFrame.setResizable(false);
 		}
 	}
 	//ActionListener for exitAction
