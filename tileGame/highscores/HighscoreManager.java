@@ -1,5 +1,3 @@
-package tileGame;
-
 /** Main class. Creates two array lists, one for the move and one for the timer leaderboards. Depending on what
  * state is specified when this class is called (1 or 2) is where the corresponding list will store
  * the new name and score. Both lists can store up to 10 scores listing from highest to lowest score */
@@ -20,9 +18,9 @@ public class HighscoreManager {
   // For input and output of the text files
   ObjectOutputStream outputStream = null;
   ObjectInputStream inputStream = null;
-  
+
   //Creates 2 new array lists, one for move leaderboard and one for timer leaderboard
-  public HighscoreManager() { 
+  public HighscoreManager() {
       moveScore = new ArrayList<Score>();
       timerScore = new ArrayList<Score>();
   }
@@ -41,7 +39,7 @@ public class HighscoreManager {
 	  updateScoreFile();
   }
 
-  // Opens the correct file depending on the state 
+  // Opens the correct file depending on the state
   public void loadScoreFile() {
       try {
     	  if(fileState == 1){
@@ -52,7 +50,7 @@ public class HighscoreManager {
     		  inputStream = new ObjectInputStream(new FileInputStream(TIMESCORE_FILE));
     		  timerScore = (ArrayList<Score>) inputStream.readObject();
           }
-          
+
       } catch (FileNotFoundException e) {
           System.out.println("[Laad] FNF Error: " + e.getMessage());
       } catch (IOException e) {
@@ -70,7 +68,7 @@ public class HighscoreManager {
           }
       }
   }
-  
+
   // This method will take the opened text file and write the new name and score to that file
   public void updateScoreFile() {
     try {
@@ -82,7 +80,7 @@ public class HighscoreManager {
     		outputStream = new ObjectOutputStream(new FileOutputStream(TIMESCORE_FILE));
     		outputStream.writeObject(timerScore);
         }
-        
+
     } catch (FileNotFoundException e) {
         System.out.println("[Update] FNF Error: " + e.getMessage() + ",the program will try and make a new file");
     } catch (IOException e) {
@@ -98,7 +96,7 @@ public class HighscoreManager {
         }
     }
   }
-  
+
   /* Method that will call the loadScoreFile() and sort() methods, depending on the fileState the correct
    * leaderboard will be returned */
   public ArrayList<Score> getScores(int state) {
@@ -123,10 +121,10 @@ public class HighscoreManager {
     	  Collections.sort(moveScore, comparator);
       }
       else if(fileState == 2){
-    	  Collections.sort(timerScore, comparator); 
+    	  Collections.sort(timerScore, comparator);
       }
   }
-  
+
   /* readHighscore() method is called whenever the leaderboard needs to be displayed. The state (1 or 2) will
    * be passed through depending on what leaderboard needs to be displayed. The loadScoreFile() method is
    * called after the state is specified and will then print out each score*/
@@ -134,8 +132,8 @@ public class HighscoreManager {
 	 String highscoreString = "";
 	 ArrayList<Score> scores;
 	 int i = 0;
-	 fileState = state; 
-	 
+	 fileState = state;
+
 	 if(fileState == 1){
 		scores = getScores(1);
 		int x = scores.size();
@@ -159,4 +157,3 @@ public class HighscoreManager {
 	return highscoreString;
   }
 }
-

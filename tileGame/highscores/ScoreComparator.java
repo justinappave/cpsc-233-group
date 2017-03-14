@@ -1,5 +1,3 @@
-package tileGame;
-
 /** This class compares the two scores. sc1 is the new score and sc2 is the previous highest
  * score in the text file. If the first score is greater than -1 will be returned and sc2 will be moved down.
  * If sc1 is less than sc2 than +1 will be returned and sc1 will take the spot below sc2 */

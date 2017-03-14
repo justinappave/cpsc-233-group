@@ -1,5 +1,3 @@
-package tileGame;
-
 /** Constructor class. Allows the array list to be set to type 'Score'*/
 
 import java.io.Serializable;
@@ -7,7 +5,7 @@ import java.io.Serializable;
 public class Score implements Serializable {
   private int score;
   private String name;
-  
+
   public int getScore() {
       return score;
   }
@@ -15,7 +13,7 @@ public class Score implements Serializable {
   public String getName() {
       return name;
   }
-  
+
   public Score(String name, int score) {
       this.score = score;
       this.name = name;
