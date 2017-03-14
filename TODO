@@ -1,7 +1,15 @@
 To Do:
 
--Update Grid to allow for larger grids (3X3,4X4,5X5), update other classes
--Get Grid to create a random grid of a player chosen size (difficulty)
--Split the movement into seperate methods for each direction
--Get the timer working (Travis)
+[DONE] -Update Grid to allow for larger grids (3X3,4X4,5X5), update other classes
+[DONE] -Split the movement into seperate methods for each direction
+
+[....] -Create interactive grid gui for all game modes
+[....] -Theme, art, images for gui
+[....] -Get Driver to connect everything
+[....] -Get Grid to create a random grid of from player chosen difficulty
+
+[DONE] -Create interactive gui menu (Travis)
+[....] -Implement gui for timer
+
 [DONE] -Get Leaderboard to display the board and save the highscores (Justin)
+[....] -Implement Leaderboard into gui
