@@ -29,4 +29,4 @@ public class TimerDemo {
     new TimerDemo(5); //set amount of seconds to timer
     System.out.println("Start!");
   }
-}  
+}
