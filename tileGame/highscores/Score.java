@@ -1,21 +1,23 @@
-package highscores;
+package tileGame;
+
+/** Constructor class. Allows the array list to be set to type 'Score'*/
 
 import java.io.Serializable;
 
 public class Score implements Serializable {
   private int score;
-  private String naam;
-
+  private String name;
+  
   public int getScore() {
       return score;
   }
 
-  public String getNaam() {
-      return naam;
+  public String getName() {
+      return name;
   }
-
-  public Score(String naam, int score) {
+  
+  public Score(String name, int score) {
       this.score = score;
-      this.naam = naam;
+      this.name = name;
   }
 }
