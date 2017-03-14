@@ -4,7 +4,8 @@ package tilegame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,7 +23,6 @@ public class MenuButton {
 	JPanel panel = new JPanel();
 	frame.add(panel);
 	frame.setResizable(false);
-	
 	JButton quickButton = new JButton("Quickplay");
 	JButton menuButton = new JButton("Menu");
 	JButton exitButton = new JButton("Exit");
@@ -38,6 +38,8 @@ public class MenuButton {
 	quickButton.addActionListener(new quickAction());
 	menuButton.addActionListener(new menuAction());
 	exitButton.addActionListener(new exitAction());
+	
+	panel.setBackground(Color.BLACK);
 }
 	//ActionListener for menuAction
 	//Frame for Quickplay
