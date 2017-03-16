@@ -7,9 +7,9 @@ To Do:
 [....] -Theme, art, images for gui
 [....] -Get Driver to connect everything
 [....] -Get Grid to create a random grid of from player chosen difficulty
+[....] -Implement gui for timer
 
 [DONE] -Create interactive gui menu (Travis)
-[....] -Implement gui for timer
 
 [DONE] -Get Leaderboard to display the board and save the highscores (Justin)
 [....] -Implement Leaderboard into gui
