@@ -10,6 +10,7 @@ To Do:
 [....] -Implement gui for timer
 
 [DONE] -Create interactive gui menu (Travis)
+[....] -Pause menu for gamemodes
 
 [DONE] -Get Leaderboard to display the board and save the highscores (Justin)
 [....] -Implement Leaderboard into gui
