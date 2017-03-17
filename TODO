@@ -2,15 +2,12 @@ To Do:
 
 [DONE] -Update Grid to allow for larger grids (3X3,4X4,5X5), update other classes
 [DONE] -Split the movement into seperate methods for each direction
+[DONE] -Create interactive gui menu
+[DONE] -Get Leaderboard to display the board and save the highscores
 
-[....] -Create interactive grid gui for all game modes
-[....] -Theme, art, images for gui
-[....] -Get Driver to connect everything
-[....] -Get Grid to create a random grid of from player chosen difficulty
-[....] -Implement gui for timer
-
-[DONE] -Create interactive gui menu (Travis)
-[....] -Pause menu for gamemodes
-
-[DONE] -Get Leaderboard to display the board and save the highscores (Justin)
-[....] -Implement Leaderboard into gui
+[....] -inheritance and polymorphism
+[....] -need at least the QuickPlay mode to fully work
+[....] -leaderboard into gui
+[....] -randomized grid into gui
+[....] -keyboard or mouse interaction for tiles
+[....] -timer for TimePlay mode
