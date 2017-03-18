@@ -20,10 +20,10 @@ To Do:
 These are the marks for the demo:
 --------------------------------------------
 Code compiles and runs (1 mark).
-Application has full functionality (1 mark).
-Classes are organized in packages (1 mark).
-Class diagram is complete (1 mark).
-Logic and gui code is in separate classes  (1 mark).
-Class design makes good use of inheritance, polymorphism and encapsulation(1 mark).
-Code is well designed and legible (1 mark).
-Code is well documented (including Javadoc) (1 mark).
+Application has full functionality (1 mark). *** --->Need to implement leaderboard
+Classes are organized in packages (1 mark). 
+Class diagram is complete (1 mark). ***
+Logic and gui code is in separate classes  (1 mark). 
+Class design makes good use of inheritance, polymorphism and encapsulation(1 mark). ***
+Code is well designed and legible (1 mark). 
+Code is well documented (including Javadoc) (1 mark). 
