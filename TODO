@@ -5,9 +5,10 @@ To Do:
 [DONE] -Create interactive gui menu
 [DONE] -Get Leaderboard to display the board and save the highscores
 
+[....] -update menus to gui versions
 [....] -inheritance and polymorphism
 [....] -need at least the QuickPlay mode to fully work
-[....] -leaderboard into gui
+[....] -leaderboard implement into game and convert to gui
 [....] -randomized grid into gui
 [....] -keyboard or mouse interaction for tiles
 [....] -timer for TimePlay mode
