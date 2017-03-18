@@ -5,11 +5,25 @@ To Do:
 [DONE] -Create interactive gui menu
 [DONE] -Get Leaderboard to display the board and save the highscores
 
-[....] -update menus to gui versions
-[....] -inheritance and polymorphism
-[....] -need at least the QuickPlay mode to fully work
-[....] -leaderboard implement into game and convert to gui
-[....] -randomized grid into gui
-[....] -keyboard or mouse interaction for tiles
-[....] -timer for TimePlay mode
-[....] -tests for all classes
+
+- Get leaderboard to work (print scores to console and add scores when needed)
+- Update Class diagram
+- Implement inheritance and polymorphism
+- Implement play again/pause menu
+- Organize files
+- Tests for all classes
+- Put Grid into GUI
+- Put leaderboard into GUI
+- Put Timer into GUI
+
+
+These are the marks for the demo:
+--------------------------------------------
+Code compiles and runs (1 mark).
+Application has full functionality (1 mark).
+Classes are organized in packages (1 mark).
+Class diagram is complete (1 mark).
+Logic and gui code is in separate classes  (1 mark).
+Class design makes good use of inheritance, polymorphism and encapsulation(1 mark).
+Code is well designed and legible (1 mark).
+Code is well documented (including Javadoc) (1 mark).
