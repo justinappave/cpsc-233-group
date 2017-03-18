@@ -100,12 +100,19 @@ public class Grid {
     shuffled list placing the last entry as the blank spot.
     */
     public String[][] makeGrid() {
+        boolean solvable = false;
         int size = getSize();
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        for (int amount = 1; amount < (size*size); amount++) {
-            numbers.add(new Integer(amount));
+        while (solvable == false) {
+            for (int amount = 1; amount < (size*size); amount++) {
+                numbers.add(new Integer(amount));
+            }
+            Collections.shuffle(numbers);
+            solvable = checkSolvability(numbers, size);
+            if (solvable == false) {
+                numbers.clear();
+            }
         }
-        Collections.shuffle(numbers);
         if (size == 2) {
             setGrid(babyConfig);
         }
@@ -118,9 +125,34 @@ public class Grid {
         else if (size == 5) {
             setGrid(hardConfig);
         }
-        
         grid = convertToGrid(numbers);
         return grid;
+    }
+    
+    
+    /** This method makes sure the grid is solvable. Since currently the empty space is always at the end,
+    it does not need to check if the empty space is on an odd row from the bottom when the grid size is even
+    See this website from more details about this: 
+    https://www.cs.bham.ac.uk/~mdr/teaching/modules04/java2/TilesSolvability.html
+    */
+    public boolean checkSolvability(ArrayList<Integer> gridList, int gridSize) {
+        boolean solvable = false;
+        int length = gridList.size();
+        int numInversions = 0;
+        for (int itemsInList = 0; itemsInList < length; itemsInList++) {
+            for (int restOfList = itemsInList; restOfList < length; restOfList++) {
+                if (gridList.get(itemsInList)-gridList.get(restOfList) > 0) {
+                    numInversions ++;
+                }
+            }
+        }
+        if ((gridSize%2 != 0) && (numInversions%2 == 0)) {
+            solvable = true;
+        }
+        else if ((gridSize%2 == 0) && (numInversions%2 == 0)) {
+            solvable = true;
+        }
+        return solvable;
     }
     
     public String[][] convertToGrid(ArrayList<Integer> numberList) {

@@ -1,13 +1,15 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
+//import tilePuzzle.*;
 
-public class Menu{
+public class Menu {
 	private int newSelect = 0;
 	private int newTimer = 0;
 
 	public int quickPlay(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("[1] Quickplay or [2] Menu?");
+        
 		int playSelect = keyboard.nextInt();
 		if(playSelect == 1){
 			System.out.println("Starting quickplay...");
@@ -60,12 +62,15 @@ public class Menu{
             diffSelect = keyboard.nextInt();
             if(diffSelect == 1){
                 System.out.println("Starting easy difficulty...");
+                validInput = true;
             }
             else if(diffSelect == 2){
                 System.out.println("Starting medium difficulty...");
+                validInput = true;
             }
             else if(diffSelect == 3){
                 System.out.println("Starting hard difficulty...");
+                validInput = true;
             }
             else{
                 System.out.println("Invalid. Select 1,2, or 3.");
@@ -88,14 +93,17 @@ public class Menu{
             if(diffSelect == 1){
                 System.out.println("Starting easy difficulty...");
                 size = 3;
+                validInput = true;
             }
             else if(diffSelect == 2){
                 System.out.println("Starting medium difficulty...");
                 size = 4;
+                validInput = true;
             }
             else if(diffSelect == 3){
                 System.out.println("Starting hard difficulty...");
-                size = 4;
+                size = 5;
+                validInput = true;
             }
             else{
                 System.out.println("Invalid. Select 1,2, or 3.");
