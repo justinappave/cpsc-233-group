@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.Collections;
 
 public class Grid {
-    private String EMPTY = " ";
+    private String EMPTY = "  ";
     
     private int emptyRow;
     private int emptyColumn;
@@ -160,7 +160,13 @@ public class Grid {
         for (int rowCounter = 0; rowCounter < size; rowCounter++) {
             for (int columnCounter = 0; columnCounter < size; columnCounter++) {
                 if ((rowCounter*columnCounter) != ((size-1)*(size-1))) {
-                    grid[rowCounter][columnCounter] = Integer.toString(numberList.get(numCounter));
+                    if (numberList.get(numCounter) < 10) {
+                        String twoDigit = " " + Integer.toString(numberList.get(numCounter));
+                        grid[rowCounter][columnCounter] = twoDigit;
+                    }
+                    else {
+                        grid[rowCounter][columnCounter] = Integer.toString(numberList.get(numCounter));
+                    }
                     numCounter += 1;
                 }
                 else {
