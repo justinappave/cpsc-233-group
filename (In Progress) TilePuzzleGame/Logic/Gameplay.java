@@ -1,4 +1,4 @@
-public class Gameplay {
+public class Gameplay extends GameWon{
     private int moveCount = 0;
     private long timeTaken = 0;
     
@@ -51,9 +51,9 @@ public class Gameplay {
         game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
-        GameWon gameWon = new GameWon();
+        //GameWon gameWon = new GameWon();
             
-        boolean winner = gameWon.checkGame(grid, rowColumnNum);
+        boolean winner = checkGame(grid, rowColumnNum);
         boolean wantQuit = false;
             
         while ((winner == false) && (wantQuit == false)) {
@@ -67,7 +67,7 @@ public class Gameplay {
             if (wantQuit == false) {
                 increaseMoveCount();
                 game.displayGrid(moveCount);
-                winner = gameWon.checkGame(grid, rowColumnNum);
+                winner = checkGame(grid, rowColumnNum);
                 timeTakenSec = (endTime - currentTime)*1000;
                 setTimeTaken(timeTakenSec);
             }
@@ -82,9 +82,9 @@ public class Gameplay {
         game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
-        GameWon gameWon = new GameWon();
+        //GameWon gameWon = new GameWon();
             
-        boolean winner = gameWon.checkGame(grid, rowColumnNum);
+        boolean winner = checkGame(grid, rowColumnNum);
         boolean wantQuit = false;
             
         while ((winner == false) && (wantQuit == false)) {
@@ -92,7 +92,7 @@ public class Gameplay {
             if (wantQuit == false) {
                 increaseMoveCount();
                 game.displayGrid(moveCount);
-                winner = gameWon.checkGame(grid, rowColumnNum);
+                winner = checkGame(grid, rowColumnNum);
             }
         }
     }
