@@ -1,7 +1,6 @@
-package tilePuzzle;
-
 public class Gameplay {
     private int moveCount = 0;
+    private long timeTaken = 0;
     
     public void increaseMoveCount() {
         moveCount ++;
@@ -11,6 +10,14 @@ public class Gameplay {
         return moveCount;
     }
     
+    public void setTimeTaken(long newTimeTaken) {
+        timeTaken = newTimeTaken;
+    }
+    
+    public int getTimeTaken() {
+        int intTimeTaken = (int) timeTaken;
+        return intTimeTaken;
+    }
     
     
     public boolean timeplay(int difficulty) {
@@ -19,6 +26,7 @@ public class Gameplay {
         Grid game = new Grid();
         long startTime = System.currentTimeMillis();
         long amountTime;
+        int timeTaken = 0;
         if (difficulty == 1) {
             amountTime = startTime + 300*1000;
         }
@@ -30,6 +38,9 @@ public class Gameplay {
         }
         while (System.currentTimeMillis() < amountTime) {
             winner = freeplay(3, amountTime);
+        }
+        if (winner == false) {
+            setTimeTaken(0);
         }
         return winner;
     }
@@ -49,6 +60,7 @@ public class Gameplay {
             
         while ((winner == false) && (wantQuit == false)) {
             long currentTime = System.currentTimeMillis();
+            long timeTakenSec = 0;
             if ((currentTime > endTime) && (endTime != -1)) {
                 System.out.println("Out of time!");
                 break;
@@ -58,20 +70,21 @@ public class Gameplay {
                 increaseMoveCount();
                 game.displayGrid(moveCount);
                 winner = gameWon.checkGame(grid, rowColumnNum);
+                timeTakenSec = (endTime - currentTime)*1000;
+                setTimeTaken(timeTakenSec);
             }
         }
         return winner;
     }
     
     public void quickplay() {
-        GameWon checker = new GameWon();
         Grid game = new Grid();
         game.setSize(3);
         String[][] grid = game.makeGrid();
         game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
-        GameWon gameWon = new GameWon();
+        GameWon gameWon = new GameWon(true);
             
         boolean winner = gameWon.checkGame(grid, rowColumnNum);
         boolean wantQuit = false;

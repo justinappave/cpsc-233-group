@@ -1,4 +1,7 @@
-package tilePuzzle;
+
+/* 
+This class prints the grid and moves the number the user specifies 
+*/
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -182,7 +185,7 @@ public class Grid {
         String direction = keyboard.nextLine();
         for(int row = 0; row < grid.length; row++) {
             for(int column = 0; column < grid.length; column++) {
-                if (grid[row][column] == " ") {
+                if (grid[row][column] == "  ") {
                     setEmptyRow(row);
                     setEmptyColumn(column);
                 }
@@ -214,7 +217,7 @@ public class Grid {
     public void setSpaceRowColumn(String[][] findGrid) {
         for(int row = 0; row < findGrid.length; row++) {
             for(int column = 0; column < findGrid.length; column++) {
-                if (findGrid[row][column] == " ") {
+                if (findGrid[row][column] == "  ") {
                     setEmptyRow(row);
                     setEmptyColumn(column);
                 }

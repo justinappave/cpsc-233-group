@@ -1,5 +1,3 @@
-package tilePuzzle;
-
 public class GameWon {
     private boolean debug;
     
@@ -22,7 +20,9 @@ public class GameWon {
         int counter = 1;
         for (int row = 0; row < rowColumnNum; row++) {
             for (int column = 0; column < rowColumnNum; column++) {
-                String tileNumStr = String.valueOf(grid[row][column]);
+                String withSpaces = grid[row][column];
+                String noSpaces = withSpaces.trim();
+                String tileNumStr = String.valueOf(noSpaces);
                 String counterStr = String.valueOf(counter);
                 
                 if (debug == true) { //if class is called with debug will print extra messages
