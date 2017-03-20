@@ -22,7 +22,6 @@ public class Gameplay {
     
     public boolean timeplay(int difficulty) {
         boolean winner = false;
-        GameWon checker = new GameWon();
         Grid game = new Grid();
         long startTime = System.currentTimeMillis();
         long amountTime;
@@ -46,7 +45,6 @@ public class Gameplay {
     }
     
     public boolean freeplay(int size, long endTime) {
-        GameWon checker = new GameWon();
         Grid game = new Grid();
         game.setSize(size);
         String[][] grid = game.makeGrid();
@@ -84,7 +82,7 @@ public class Gameplay {
         game.displayGrid(moveCount);
         int rowColumnNum = game.getSize();
         
-        GameWon gameWon = new GameWon(true);
+        GameWon gameWon = new GameWon();
             
         boolean winner = gameWon.checkGame(grid, rowColumnNum);
         boolean wantQuit = false;
