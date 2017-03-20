@@ -7,6 +7,7 @@ java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore GridT
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class GridTest {
     
@@ -77,5 +78,117 @@ public class GridTest {
         Grid g1 = new Grid();
         g1.setSize(5);
         assertEquals("Shouldn't allow negative size", 5, g1.getSize());
+    }
+    
+    @Test
+    public void test_checkSolvability3x3Valid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i < 9; i++) {
+            testList.add(i);
+        }
+        assertEquals("Should be true, is a valid grid", true, g1.checkSolvability(testList, 3));
+    }
+    
+    @Test
+    public void test_checkSolvability4x4Valid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i < 16; i++) {
+            testList.add(i);
+        }
+        assertEquals("Should be true, is a valid grid", true, g1.checkSolvability(testList, 4));
+    }
+    
+    @Test
+    public void test_checkSolvability5x5Valid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i < 25; i++) {
+            testList.add(i);
+        }
+        assertEquals("Should be true, is a valid grid", true, g1.checkSolvability(testList, 5));
+    }
+    
+    @Test
+    public void test_checkSolvability3x3Invalid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i <= 6; i++) {
+            testList.add(i);
+        }
+        testList.add(8);
+        testList.add(7);
+        assertEquals("Should be false, is a invalid grid", false, g1.checkSolvability(testList, 3));
+    }
+    
+    @Test
+    public void test_checkSolvability4x4Invalid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i <= 13; i++) {
+            testList.add(i);
+        }
+        testList.add(15);
+        testList.add(14);
+        assertEquals("Should be false, is a invalid grid", false, g1.checkSolvability(testList, 4));
+    }
+    
+    @Test
+    public void test_checkSolvability5x5Invalid() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i <= 22; i++) {
+            testList.add(i);
+        }
+        testList.add(24);
+        testList.add(23);
+        assertEquals("Should be false, is a invalid grid", false, g1.checkSolvability(testList, 5));
+    }
+    
+    @Test
+    public void test_convertToGrid3x3() {
+        Grid g1 = new Grid();
+        ArrayList<Integer> testList = new ArrayList<Integer>();
+        for (int i = 1; i < 9; i++) {
+            testList.add(i);
+        }
+        String[][] testGrid = g1.convertToGrid(testList);
+        String[][] correctGrid = {
+            {" 1"," 2"," 3"},
+            {" 4"," 5"," 6"},
+            {" 7"," 8","  "}
+        };
+        //assertEquals("Should be true, grids should be equal", correctGrid, testGrid);
+    }
+    
+    @Test
+    public void test_makeGrid3x3() {
+        Grid g1 = new Grid();
+        g1.setSize(3);
+        g1.makeGrid();
+        System.out.println();
+        g1.displayGrid(0);
+        System.out.println("Should be a 3x3 grid with move count 0");
+    }
+    
+    @Test
+    public void test_makeGrid4x4() {
+        Grid g1 = new Grid();
+        g1.setSize(4);
+        g1.makeGrid();
+        System.out.println();
+        g1.displayGrid(2);
+        System.out.println("Should be a 4x4 grid with move count 2");
+    }
+    
+    @Test
+    public void test_makeGrid5x5() {
+        Grid g1 = new Grid();
+        g1.setSize(5);
+        g1.makeGrid();
+        System.out.println();
+        g1.displayGrid(4);
+        System.out.println("Should be a 5x5 grid with move count 4");
     }
 }
