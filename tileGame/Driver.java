@@ -1,4 +1,4 @@
-
+import Leaderboards.*;
 
 public class Driver {
     public static void main(String[] args) {
@@ -7,12 +7,17 @@ public class Driver {
         int moveCount;
         Menu gameMenu = new Menu();
         Gameplay gameplay = new Gameplay();
+        HighscoreManager hm = new HighscoreManager();
         
         while (keepPlaying == true) {
             int quickplay = gameMenu.quickPlay();
             if (quickplay == 1) {
-                gameplay.quickplay();
-                
+                won = gameplay.quickplay();
+                if (won == true) {
+                    String playerName = gameMenu.getName();
+                    moveCount = gameplay.getMoveCount();
+                    hm.addScore(playerName, moveCount, 1);
+                }
                 keepPlaying = gameMenu.playAgain();
             }
             
@@ -23,8 +28,8 @@ public class Driver {
                     won = gameplay.timeplay(difficulty);
                     if (won == true) {
                         String playerName = gameMenu.getName();
-                        //int timeTaken = gameMenu.getTime();
-                        //highscore.addScore(playerName, 100);
+                        int timeTaken = gameplay.getTimeTaken();
+                        hm.addScore(playerName, timeTaken, 2);
                     }
                     keepPlaying = gameMenu.playAgain();
                 }
@@ -35,21 +40,18 @@ public class Driver {
                     if (won == true) {
                         String playerName = gameMenu.getName();
                         moveCount = gameplay.getMoveCount();
-                        //highscore.addScore(playerName,moveCount);
+                        hm.addScore(playerName, moveCount, 1);
                     }
                     keepPlaying = gameMenu.playAgain();
                 }
                 else if (gameMode == 3) { //CHECK LEADERBOARDS
-                    System.out.println("Leaderboards here");
-                    //int highscoreType = gameMenu.getHighscoreChoice();
-                    /**if (highscoreType == 1) {
-                        //print freeplay highscores
+                    int leaderboardChoice = gameMenu.leaderboards();
+                    if (leaderboardChoice == 1) {
+                        System.out.print(hm.readHighscore(2));
                     }
-                    else if (highscoreType == 2) {
-                    //print timeplay highscores
+                    else {
+                        System.out.print(hm.readHighscore(1));
                     }
-                    //System.out.print(highscore.getHighscoreString());
-                    */
                 }
             }
         }

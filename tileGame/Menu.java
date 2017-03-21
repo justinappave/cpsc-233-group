@@ -50,6 +50,31 @@ public class Menu {
         }
 		return modeSelect;
 	}
+    
+    public int leaderboards() {
+        Scanner keyboard = new Scanner(System.in);
+		System.out.println("Select mode: ");
+		System.out.println("1. Timer Leaderboards");
+		System.out.println("2. Freeplay Leaderboards");
+        boolean validInput = false;
+        int modeSelect = 0;
+        while (!validInput) {
+            modeSelect = keyboard.nextInt();
+            if (modeSelect == 1) {
+                System.out.println("Loading Timer Leaderboards...");
+                validInput = true;
+            }
+            else if (modeSelect == 2) {
+                System.out.println("Loading Freeplay Leaderboards...");
+                validInput = true;
+            }
+            else {
+                System.out.print("Invalid. Select 1 or 2: ");
+            }
+        }
+        return modeSelect;
+    }
+    
 	public int getTimerDifficulty(){
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Select difficulty: ");
