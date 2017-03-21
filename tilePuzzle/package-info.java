@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author travis.nguyen1
+ * @author Travis
  *
  */
 package tilePuzzle;
