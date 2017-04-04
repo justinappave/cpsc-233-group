@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Travis
+ * @author Tricia
  *
  */
 package tilePuzzle;
