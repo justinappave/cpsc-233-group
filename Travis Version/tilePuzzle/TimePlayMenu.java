@@ -7,7 +7,7 @@ import javax.swing.*;
 public class TimePlayMenu implements ActionListener {
 	private JFrame frame;
 	private JPanel pane, upperPane, lowerPane;
-	private JButton smallButton, mediumButton, largeButton, backButton;
+	private JButton smallButton, mediumButton, hardButton, backButton;
 	private JLabel title;
 	
 	TimePlayMenu() {
@@ -33,13 +33,13 @@ public class TimePlayMenu implements ActionListener {
 		mediumButton.setBorderPainted(false);
 		mediumButton.setFocusPainted(false);
 		
-		largeButton = new JButton("Hard (1:00)");
-		largeButton.setPreferredSize(new Dimension(400,90));
-		largeButton.setFont(new Font("ARIAL", Font.BOLD, 40));
-		largeButton.setForeground(Color.WHITE);
-		largeButton.setBackground(Color.BLACK);
-		largeButton.setBorderPainted(false);
-		largeButton.setFocusPainted(false);
+		hardButton = new JButton("Hard (1:00)");
+		hardButton.setPreferredSize(new Dimension(400,90));
+		hardButton.setFont(new Font("ARIAL", Font.BOLD, 40));
+		hardButton.setForeground(Color.WHITE);
+		hardButton.setBackground(Color.BLACK);
+		hardButton.setBorderPainted(false);
+		hardButton.setFocusPainted(false);
 		
 		backButton = new JButton("Back");
 		backButton.setPreferredSize(new Dimension(400,90));
@@ -53,7 +53,7 @@ public class TimePlayMenu implements ActionListener {
 		lowerPane = new JPanel(new FlowLayout());
 		lowerPane.setPreferredSize(new Dimension(800,500));
 		lowerPane.setBackground(Color.BLACK);
-		lowerPane.add(smallButton);lowerPane.add(mediumButton);lowerPane.add(largeButton);lowerPane.add(backButton);
+		lowerPane.add(smallButton);lowerPane.add(mediumButton);lowerPane.add(hardButton);lowerPane.add(backButton);
 		
 		upperPane = new JPanel(new FlowLayout());
 		upperPane.setPreferredSize(new Dimension(800,300));
@@ -74,27 +74,28 @@ public class TimePlayMenu implements ActionListener {
 		//Add action commands and action listeners
 		smallButton.setActionCommand("Easy (5:00)");
 		mediumButton.setActionCommand("Medium (3:00)");
-		largeButton.setActionCommand("Hard (1:00)");
+		hardButton.setActionCommand("Hard (1:00)");
 		backButton.setActionCommand("Back");
 		smallButton.addActionListener(this);
 		mediumButton.addActionListener(this);
-		largeButton.addActionListener(this);
+		hardButton.addActionListener(this);
 		backButton.addActionListener(this);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Easy (5:00)")) {
 			Driver getMode = new Driver();
-			getMode.SmallPlay();
+			getMode.EasyTimePlay();
 			frame.setVisible(false);
 		}
 		else if(e.getActionCommand().equals("Medium (3:00)")) {
 			Driver getMode = new Driver();
-			getMode.SmallPlay();
+			getMode.MediumTimePlay();
 			frame.setVisible(false);
 		}
-		else if(e.getActionCommand().equals("Hard (1:00")) {
+		else if(e.getActionCommand().equals("Hard (1:00)")) {
 			Driver getMode = new Driver();
-			getMode.SmallPlay();
+			getMode.HardTimePlay();
+			System.out.println("Hello");
 			frame.setVisible(false);
 		}
 		else if(e.getActionCommand().equals("Back")) {

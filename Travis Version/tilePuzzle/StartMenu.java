@@ -14,7 +14,7 @@ public class StartMenu implements ActionListener {
 		//Label properties
 		title = new JLabel("TILE PUZZLE");
 		title.setPreferredSize(new Dimension(650,450));
-		title.setFont(new Font("ARIAL", Font.BOLD, 100));
+		title.setFont(new Font("ARIAL", Font.BOLD, 90));
 		title.setForeground(Color.ORANGE);
 		
 		//Button properties

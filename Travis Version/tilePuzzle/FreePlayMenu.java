@@ -84,17 +84,17 @@ public class FreePlayMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("3 x 3 Grid")) {
 			Driver getMode = new Driver();
-			getMode.SmallPlay();
+			getMode.SmallFreePlay();
 			frame.setVisible(false);
 		}
 		else if(e.getActionCommand().equals("4 x 4 Grid")) {
 			Driver getMode = new Driver();
-			getMode.MediumPlay();
+			getMode.MediumFreePlay();
 			frame.setVisible(false);
 		}
 		else if(e.getActionCommand().equals("5 x 5 Grid")) {
 			Driver getMode = new Driver();
-			getMode.LargePlay();
+			getMode.LargeFreePlay();
 			frame.setVisible(false);
 		}
 		else if(e.getActionCommand().equals("Back")) {
