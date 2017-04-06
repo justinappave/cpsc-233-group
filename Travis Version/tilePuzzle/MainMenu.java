@@ -94,6 +94,11 @@ public class MainMenu implements ActionListener {
 			getMode.TimePlayMenu();
 			frame.setVisible(false);
 		}
+		else if(e.getActionCommand().equals("Leaderboards")) {
+			Driver getMode = new Driver();
+			getMode.LeaderboardMenu();
+			frame.setVisible(false);
+		}
 		else if(e.getActionCommand().equals("Back")) {
 			Driver getMode = new Driver();
 			getMode.StartMenu();

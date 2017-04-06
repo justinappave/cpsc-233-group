@@ -14,6 +14,19 @@ public class Driver {
 		MainMenu menu = new MainMenu();
 	}
 	
+	//LEADERBOARD MENU
+	//Move to leader board menu
+	public void LeaderboardMenu() {
+		LeaderboardMenu leader = new LeaderboardMenu();
+	}
+	//LEADERBOARDS
+	//Move to leader boards
+	public void Leaderboards() {
+		HighScores hs = new HighScores();
+		hs.resetFiles();
+		hs.writeFile("Scott", 15, 0);
+	}
+	
 	//FREEPLAY MENU
 	//Move to free play menu
 	public void FreePlayMenu() {
