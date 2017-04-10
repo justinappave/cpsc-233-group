@@ -4,12 +4,17 @@ Create winner message pop up with name entry field [Travis]
 fix menu visibility issue [Scott]
 fix timeplay
 DOCUMENT EVERYTHING/change bad variable names 
- {
- Classes and methods are javadoc'd to explain to other 
+ -----Classes and methods are javadoc'd to explain to other 
  developers how to use classes and methods. Blocks of code 
  are documented as needed to explain what the code is 
  accomplishing and how.
- }
+ 
+ Good and consistent use of indentation, white space 
+ and blocking of related code.  Naming of variables, 
+ classes and methods and avoidance of magic numbers make 
+ code easy to read. Conditions, statements and expressions 
+ are easy to understand and minimal nesting of statement 
+ makes code easy to read.-----
  
 Create class diagram
 Create README File
