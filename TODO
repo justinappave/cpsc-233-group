@@ -1,29 +1,15 @@
-To Do:
+TODO:
 
-[DONE] -Update Grid to allow for larger grids (3X3,4X4,5X5), update other classes
-[DONE] -Split the movement into seperate methods for each direction
-[DONE] -Create interactive gui menu
-[DONE] -Get Leaderboard to display the board and save the highscores
-
-
-- Get leaderboard to work (print scores to console and add scores when needed)
-- Update Class diagram
-- Implement inheritance and polymorphism
-- Implement play again/pause menu
-- Organize files
-- Tests for all classes
-- Put Grid into GUI
-- Put leaderboard into GUI
-- Put Timer into GUI
-
-
-These are the marks for the demo:
---------------------------------------------
-Code compiles and runs (1 mark).
-Application has full functionality (1 mark). *** --->Need to implement leaderboard
-Classes are organized in packages (1 mark). 
-Class diagram is complete (1 mark). ***
-Logic and gui code is in separate classes  (1 mark). 
-Class design makes good use of inheritance, polymorphism and encapsulation(1 mark). ***
-Code is well designed and legible (1 mark). 
-Code is well documented (including Javadoc) (1 mark). 
+Create winner message pop up with name entry field [Travis]
+fix menu visibility issue [Scott]
+fix timeplay
+DOCUMENT EVERYTHING/change bad variable names 
+ {
+ Classes and methods are javadoc'd to explain to other 
+ developers how to use classes and methods. Blocks of code 
+ are documented as needed to explain what the code is 
+ accomplishing and how.
+ }
+ 
+Create class diagram
+Create README File
