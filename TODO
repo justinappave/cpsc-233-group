@@ -1,8 +1,6 @@
 TODO:
 
-Create winner message pop up with name entry field [Travis]
-fix menu visibility issue [Scott]
-fix timeplay
+Possibly move the action listeners in Gameplay to seperate classes
 DOCUMENT EVERYTHING/change bad variable names 
  -----Classes and methods are javadoc'd to explain to other 
  developers how to use classes and methods. Blocks of code 
@@ -16,5 +14,8 @@ DOCUMENT EVERYTHING/change bad variable names
  are easy to understand and minimal nesting of statement 
  makes code easy to read.-----
  
-Create class diagram
-Create README File
+ 
+Document and clean up code: Highscores, leaderboarddisplay, gameplay, pictureplay [SCOTT IS WORKING ON THIS]
+Document and clean up code: Freeplay, Driver, leaderboardmenu, mainmenu, timeplay [TRAVIS]
+Create class diagram [TRAVIS]
+Create README File [DONE]
