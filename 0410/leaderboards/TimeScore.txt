@@ -1,0 +1,12 @@
+Expert
+Scott
+Advanced
+Scott
+Average
+Beginner
+20
+36
+40
+42
+80
+150
