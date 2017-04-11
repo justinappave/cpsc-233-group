@@ -180,7 +180,7 @@ public class Gameplay implements ActionListener{
                 won = true;
             }
             try {
-                if ((((JButton) list.get(i)).getIcon()).toString().equals(i + ".png")) {
+                if ((((JButton) list.get(i)).getIcon()).toString().equals("resources/" + i + ".png")) {
                     counter++;
                 }
             }
@@ -580,6 +580,7 @@ public class Gameplay implements ActionListener{
             }
             boolean won = checkGamePicture(list);
             if (won == true) {
+                JOptionPane.showMessageDialog(null, "CONGRATULATIONS! YOU WON!");
                 frame.dispose();
                 Driver getMenu = new Driver();
                 getMenu.MainMenu();
