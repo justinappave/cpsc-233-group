@@ -15,7 +15,9 @@ DOCUMENT EVERYTHING/change bad variable names
  makes code easy to read.-----
  
  
-Document and clean up code: Highscores, leaderboarddisplay, gameplay, pictureplay [SCOTT IS WORKING ON THIS]
+Document and clean up code: Highscores, leaderboarddisplay, gameplay, pictureplay [DONE]
 Document and clean up code: Freeplay, Driver, leaderboardmenu, mainmenu, timeplay [DONE]
 Create class diagram [TRAVIS]
 Create README File [DONE]
+
+STILL NEED OVERALL CLASS DOCUMENTATION
