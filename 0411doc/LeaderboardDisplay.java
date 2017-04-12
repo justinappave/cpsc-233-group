@@ -1,3 +1,7 @@
+/* This class is for displaying the scores that are recieved from the highscores class.
+They are put into a JFrame and organized into two columns, one for the player name, and
+one for their score
+*/
 
 import leaderboards.*;
 import java.awt.*;
