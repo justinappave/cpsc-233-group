@@ -1,3 +1,8 @@
+/*
+This class creates the frame and adds all the specific components relating to the freeplay mode.
+To use this class you just need to call it with a integer argument
+*/
+
 import java.awt.*;
 import javax.swing.*;
 
