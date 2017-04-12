@@ -3,9 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /*
-@Authors...
-explain what class does...
-parameters, returns
+This class displays a menu for choosing which gametype leaderboard the user want to display, it then calls the
+class LeaderboardDisplay to display the requested leaderboard. The user can also go back to the main menu.
 */
 
 public class LeaderboardMenu extends JFrame implements ActionListener {
