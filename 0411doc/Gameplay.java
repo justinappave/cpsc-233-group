@@ -1,3 +1,7 @@
+/* This is the main class that creates the game screen and allows for movement of the tiles.
+It is never instantiated so it is an abstract class. 
+The actions listeners for all the buttons relating to the different gametypes are in this class
+*/
 
 import leaderboards.*;
 import java.awt.*;
@@ -7,7 +11,7 @@ import java.util.Collections;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Gameplay implements ActionListener{
+public abstract class Gameplay implements ActionListener{
     Timer time;
     public JFrame frame;
     JButton movesButton = new JButton("Moves: 0");
