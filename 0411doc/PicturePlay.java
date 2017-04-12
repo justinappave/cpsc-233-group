@@ -1,6 +1,10 @@
 import java.awt.*;
 import javax.swing.*;
 
+/* This class creates the frame and adds all the specific components relating to the pictureplay mode.
+
+*/
+
 public class PicturePlay extends Gameplay {
     
     //Intitialize frame components
