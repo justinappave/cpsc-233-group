@@ -1,7 +1,3 @@
-/* This is the main class that creates the game screen and allows for movement of the tiles.
-It is never instantiated so it is an abstract class. 
-The actions listeners for all the buttons relating to the different gametypes are in this class
-*/
 
 import leaderboards.*;
 import java.awt.*;
@@ -11,55 +7,61 @@ import java.util.Collections;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public abstract class Gameplay implements ActionListener{
-    Timer time;
-    public JFrame frame;
+/**
+Gameplay class creates grid and implements frame components
+and movement for player actions.
+*/
+public class Gameplay implements ActionListener{
+
+  //Initialize frame components
+  Timer time;
+  public JFrame frame;
     JButton movesButton = new JButton("Moves: 0");
     JButton timeButton = new JButton("Start Game!");
     JButton timeDisplayButton = new JButton("0");
     public ArrayList list;
-	JPanel gridPane, movesPane, timePane;
+	  JPanel gridPane, movesPane, timePane;
     private int size;
     private int moves;
     private int mode;
     private int counter = 0;
-    
+
     public void increaseMoves() {
         moves += 1;
     }
-    
+
     public int getMoves() {
         return moves;
     }
-    
+
     public void increaseTime() {
         counter += 1;
     }
-    
+
     public int getTime() {
         return counter;
     }
-    
+
     public void setSize(int newSize) {
         size = newSize;
     }
     public int getSize() {
         return size;
     }
-    
+
     public void setMode(int newMode) {
         mode = newMode;
     }
-    
+
     public int getMode() {
         return mode;
     }
-	
+
 	public Gameplay(int size, int mode) {
 		setSize(size);
         setMode(mode);
 	}
-    
+
     /**This method creates a new JPanel and puts a grid of buttons on it. The grid is shuffled and
     it is checked that the grid remains solvable. If it is not solvable, a new grid is made.
     It takes that argument of int for the grid size. It returns a JPanel.*/
@@ -69,7 +71,7 @@ public abstract class Gameplay implements ActionListener{
             JButton[] tile = new JButton[size*size];
             gridPane = new JPanel(new GridLayout(size,size));
             list = new ArrayList();
-            
+
             for (int x = 0; x < (size*size); x++) {
                 if(x < (size*size)-1){
                     if (getMode() != 0) {
@@ -115,8 +117,8 @@ public abstract class Gameplay implements ActionListener{
         }
         return gridPane;
     }
-    
-    /**This method creates a bar with a quit to menu button and also different buttons depending on 
+
+    /**This method creates a bar with a quit to menu button and also different buttons depending on
     the gametype*/
     public JPanel infoBar() {
         JPanel topPane = new JPanel(new FlowLayout());
@@ -125,20 +127,20 @@ public abstract class Gameplay implements ActionListener{
         quitToMenuButton.addActionListener(this);
         topPane.add(quitToMenuButton);
         return topPane;
-    }    
-    
-    /**This method checks to make sure the grid is solvable. It takes the list and the size of the 
+    }
+
+    /**This method checks to make sure the grid is solvable. It takes the list and the size of the
     /the grid as arguements and returns whether the grid is solvable or not.*/
     public boolean checkSolvability(ArrayList gridList, int gridSize) {
         boolean solvable = false;
         int length = gridList.size();
         int numInversions = 0;
         for (int itemsInList = 0; itemsInList < length; itemsInList++) {
-            for (int restOfList = itemsInList; restOfList < length; restOfList++) { 
+            for (int restOfList = itemsInList; restOfList < length; restOfList++) {
                 if (getMode() == 0) {
                     try {
 			    //if (number in list - number later in list > 0)
-                        if (Integer.parseInt(((JButton)gridList.get(itemsInList)).getIcon().toString().substring(10,11)) - 
+                        if (Integer.parseInt(((JButton)gridList.get(itemsInList)).getIcon().toString().substring(10,11)) -
                                 Integer.parseInt(((JButton)gridList.get(restOfList)).getIcon().toString().substring(10,11)) > 0) {
                             numInversions++;
                         }
@@ -166,7 +168,7 @@ public abstract class Gameplay implements ActionListener{
         }
         return solvable;
     }
-    
+
     /**This method checks to see if the game has been won for the non picture gametypess.
     It takes the list as an arugment and returns whter or not the game has been won*/
     public boolean checkGame(ArrayList list) {
@@ -187,7 +189,7 @@ public abstract class Gameplay implements ActionListener{
         }
         return won;
     }
-    
+
     /**This method checks to see if the game has been won for the picture gametype
     It takes the list ad argument whether or not the game has been won*/
     public boolean checkGamePicture(ArrayList list) {
@@ -208,20 +210,20 @@ public abstract class Gameplay implements ActionListener{
         }
         return won;
     }
-    
+
     //Action performed method (actions based on button pressed)
     public void actionPerformed(ActionEvent e) {
-        
+
         //get Source of where the event occured
         JButton button = (JButton) e.getSource();
-        
+
         //excution when quitButton is pressed
         if (e.getActionCommand().equals("quit")) {
             frame.dispose();
             Driver getMenu = new Driver();
             getMenu.MainMenu();
         }
-        
+
         //execution when top left button is pressed
         else if (e.getActionCommand().equals("0")) { //top left corner
             if (button.getText().equals("")) {
@@ -241,7 +243,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when top middle button is pressed
         else if (e.getActionCommand().equals("1")) {
             if (button.getText().equals("")) {
@@ -267,7 +269,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when top right button is pressed
         else if (e.getActionCommand().equals("2")) {
             if (button.getText().equals("")) {
@@ -287,7 +289,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when middle left button is pressed
         else if (e.getActionCommand().equals("3")) {
             if (button.getText().equals("")) {
@@ -313,7 +315,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when center button is pressed
         else if (e.getActionCommand().equals("4")) {
             if (button.getText().equals("")) {
@@ -345,7 +347,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when middle right button is pressed
         else if (e.getActionCommand().equals("5")) {
             if (button.getText().equals("")) {
@@ -371,7 +373,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when bottom left button is pressed
         else if (e.getActionCommand().equals("6")) {
             if (button.getText().equals("")) {
@@ -391,7 +393,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when bottomMiddle button is pressed
         else if (e.getActionCommand().equals("7")) {
             if (button.getText().equals("")) {
@@ -417,7 +419,7 @@ public abstract class Gameplay implements ActionListener{
                 }
             }
         }
-        
+
         //execution when bottom right button is pressed
         else if (e.getActionCommand().equals("8")) {
             if (button.getText().equals("")) {
@@ -436,7 +438,7 @@ public abstract class Gameplay implements ActionListener{
                     increaseMoves();
                 }
             }
-            
+
             //Check to see if game is in winning state
             boolean won = checkGame(list);
             if (won == true && mode == 1) {
@@ -448,7 +450,7 @@ public abstract class Gameplay implements ActionListener{
                 getMenu.MainMenu();
             }
         }
-        
+
         //execution when top left button is pressed
         else if (e.getActionCommand().equals("pic0")) {
             JButton rightButton = (JButton) list.get(1);
@@ -464,7 +466,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when top middle button is pressed
         else if (e.getActionCommand().equals("pic1")) {
             Icon icon = button.getIcon();
@@ -487,7 +489,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when top right button is pressed
         else if (e.getActionCommand().equals("pic2")) {
             Icon icon = button.getIcon();
@@ -504,7 +506,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when middle left button is pressed
         else if (e.getActionCommand().equals("pic3")) {
             Icon icon = button.getIcon();
@@ -527,7 +529,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when center button is pressed
         else if (e.getActionCommand().equals("pic4")) {
             Icon icon = button.getIcon();
@@ -556,7 +558,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when middle right button is pressed
         else if (e.getActionCommand().equals("pic5")) {
             Icon icon = button.getIcon();
@@ -579,8 +581,8 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
-        
+
+
         //execution when bottom left button is pressed
         else if (e.getActionCommand().equals("pic6")) {
             JButton rightButton = (JButton) list.get(7);
@@ -596,7 +598,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when bottom middle button is pressed
         else if (e.getActionCommand().equals("pic7")) {
             Icon icon = button.getIcon();
@@ -619,7 +621,7 @@ public abstract class Gameplay implements ActionListener{
                 button.setIcon(new ImageIcon("resources/null.png"));
             }
         }
-        
+
         //execution when bottom right button is pressed
         else if (e.getActionCommand().equals("pic8")) {
             JButton leftButton = (JButton) list.get(7);
@@ -642,7 +644,7 @@ public abstract class Gameplay implements ActionListener{
                 getMenu.MainMenu();
             }
         }
-        
+
         //excution for timeplay, game only starts once the timer has been started
         else if(e.getActionCommand().equals("Start timer!")) {
             timeButton.removeActionListener(this);

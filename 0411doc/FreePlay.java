@@ -1,10 +1,10 @@
-/*
-This class creates the frame and adds all the specific components relating to the freeplay mode.
-*/
-
 import java.awt.*;
 import javax.swing.*;
 
+/**
+FreePlay class creates frame and
+gets grid from parent class Gameplay
+*/
 public class FreePlay extends Gameplay {
 
 	//Initialize frame components;

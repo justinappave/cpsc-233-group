@@ -1,6 +1,3 @@
-/*This class creates the frame and adds all the specific components relating to the timeplay mode
-*/
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.Timer;
@@ -8,6 +5,10 @@ import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+TimePlay class creates frame and
+gets grid from parent class Gameplay
+*/
 public class TimePlay extends Gameplay {
 
   //Initialize frame components
@@ -32,7 +33,7 @@ public class TimePlay extends Gameplay {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false);
     frame.setVisible(true);
-    
+
     //Add grid and info button pane
     frame.add(gridPane);
     frame.add(topPane, BorderLayout.NORTH);
