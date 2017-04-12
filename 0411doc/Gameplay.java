@@ -133,6 +133,7 @@ public class Gameplay implements ActionListener{
             for (int restOfList = itemsInList; restOfList < length; restOfList++) { 
                 if (getMode() == 0) {
                     try {
+			    //if (number in list - number later in list > 0)
                         if (Integer.parseInt(((JButton)gridList.get(itemsInList)).getIcon().toString().substring(10,11)) - 
                                 Integer.parseInt(((JButton)gridList.get(restOfList)).getIcon().toString().substring(10,11)) > 0) {
                             numInversions++;
@@ -143,6 +144,7 @@ public class Gameplay implements ActionListener{
                 }
                 else {
                     try {
+			    //if (number in list - number later in list > 0)
                         if (Integer.parseInt(((JButton)gridList.get(itemsInList)).getText())-Integer.parseInt(((JButton)gridList.get(restOfList)).getText()) > 0) {
                             numInversions ++;
                         }
@@ -171,6 +173,7 @@ public class Gameplay implements ActionListener{
                 won = true;
             }
             try {
+		    //if (button text == counter)
                 if (Integer.parseInt(((JButton) list.get(i)).getText()) == counter) {
                     counter++;
                 }
@@ -191,6 +194,7 @@ public class Gameplay implements ActionListener{
                 won = true;
             }
             try {
+		    //if (button icon name == counter)
                 if ((((JButton) list.get(i)).getIcon()).toString().equals("resources/" + i + ".png")) {
                     counter++;
                 }
