@@ -1,3 +1,6 @@
+/*This class creates the frame and adds all the specific components relating to the timeplay mode
+*/
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.Timer;
