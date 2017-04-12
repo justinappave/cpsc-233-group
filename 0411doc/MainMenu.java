@@ -3,8 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /*
-explain what class does...
-parameters, returns
+This class is the main menu, it is the first screen the player sees when they start up the game. From here the user 
+can go to the leaderboard menu or play one of the three gametypes.
 */
 
 public class MainMenu extends JFrame implements ActionListener {
